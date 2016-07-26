@@ -1,0 +1,26 @@
+# Species in model
+
+
+# TGFB2 signaling
+RAS_GTP
+RAS_GDP
+RAF
+RAF_P
+MEK_P
+MEK_PP
+ERK
+ERK_P
+ERK_PP
+AP1_SP1
+AP1_SP1_P
+
+# TGFB2/3 signaling
+Smad
+pSmad
+
+
+
+# Infrastructure 
+PPase
+RNAP
+RIBOSOME
