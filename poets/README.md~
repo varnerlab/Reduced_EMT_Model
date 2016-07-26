@@ -1,0 +1,14 @@
+EC.dat
+emt_grn_model_objective_function.jl
+medici_blot_combined.jl
+out_tmp
+parallel_regen_prep_plot.jl
+PC.dat
+RA.dat
+README.md
+regen_prep_plot.jl
+results_poets
+run_emt_poets.jl
+
+# inactive files
+decomp_emt_grn_model_objective_function.jl
