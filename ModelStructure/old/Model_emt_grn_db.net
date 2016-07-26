@@ -1,0 +1,167 @@
+// ============================================================ //
+// EMT model file for the Kwatee GRN plugin
+// Author: J. Varner
+// Version: 1.0
+// ============================================================ //
+//
+// ============================================================ //
+// Signal transduction reactions -
+#pragma handler_class = VLCGSignalTransductionParserDelegate //Know how to interpret the records in each section
+
+//
+// Record:
+// name (unique),{enzyme_symbol|[]},reactants,products,{-inf|0},inf;
+//
+// Notes
+// [] => enzyme generates Vmax rate
+// reverse => -inf generates reversible rate
+// ============================================================ //
+
+// TGFB1/2 and TGFB3 binding - // name field followed by enzyme field
+TGFB12_binding,[],TGFB12+R,TGFB12_R,-inf,inf; // name,enzy, reactants, products, reverse and forward, // eg. phosphotase symbol, empty braket means no emzyme
+TGFB3_binding,[],TGFB3+R,TGFB3_R,-inf,inf;
+
+// VEGF binding -
+VEGF_binding,[],VEGF+VEGFR,VEGF_VEGFR,-inf,inf;
+VEGF_VEGFR_CaM,VEGF_VEGFR,CaM,Active_CaM,0,inf;
+VEGF_VEGFR_MAPK,VEGF_VEGFR,MAPK,pMAPK,0,inf;
+
+// MAPK phosphorylation of NFATC
+MAPK_NFATc_phosphorylation,Active_CaM,NFATc,pNFATc,0,inf; // not reversable
+
+// TGFB activation of Smad and AP1 -
+TGFB12_R_phosphorylation_MAPK,TGFB12_R,MAPK,pMAPK,0,inf;
+MAPK_phosphorylation_AP1,pMAPK,AP1,pAP1,0,inf;
+TGFB12_R_phosphorylation_Smad,TGFB12_R,Smad,pSmad,0,inf;
+TGFB3_R_phosphorylation_Smad,TGFB3_R,Smad,pSmad,0,inf;
+
+// interaction between cadherin and catenin -
+Binding_cadherin_catenin,[],ECadherin+BCatenin,ECadherin_BCatenin,-inf,inf;
+
+// TCF4 transcriptional complex formation -
+TCF4_catenin_complex_formation,[],TCF4+BCatenin,Active_TCF4,-inf,inf;
+
+// LEF-1 transcriptional complex formation -
+LEF1_catenin_complex_formation,[],LEF1+BCatenin,Active_LEF1,-inf,inf;
+
+// protein degrdation and deactivation -
+deactivation_pSmad,[],pSmad,[],0,inf; // no enzyme, psmad goes to nothing, 1st order degredation rate, randomly gnerated constant, but then you need to fit it. if you were giving it a value, it would happen in the data file // this file is structure ONLY
+deactivation_pMAPK,[],pMAPK,[],0,inf;
+deactivation_TGFB_R,[],TGFB12_R,[],0,inf;
+deactivation_TGFB3_R,[],TGFB3_R,[],0,inf;
+deactivation_AP1,[],pAP1,[],0,inf;
+deactivation_pNFATc,[],pNFATc,[],0,inf;
+deactivation_Active_CaM,[],Active_CaM,[],0,inf;
+BCatenin_degrdation,[],BCatenin,[],0,inf;
+ECadherin_degrdation,[],ECadherin,[],0,inf;
+Smad_degradation,[],Smad,[],0,inf;
+TCF4_degrdation,[],TCF4,[],0,inf;
+Active_TCF4_degradation,[],Active_TCF4,[],0,inf;
+YREG1_degradation,[],YREG1,[],0,inf;
+LEF1_degradation,[],LEF1,[],0,inf;
+Active_LEF1_degradation,[],Active_LEF1,[],0,inf;
+AP1_degradation,[],AP1,[],0,inf;
+Vimentin_degradation,[],Vimentin,[],0,inf;
+R_degradation,[],R,[],0,inf;
+VEGFR_degradation,[],VEGFR,[],0,inf;
+NFATc_degradation,[],NFATc,[],0,inf;
+CaM_degradation,[],CaM,[],0,inf;
+MAPK_degrdation,[],MAPK,[],0,inf;
+ECadherin_BCatenin_degradation,[],ECadherin_BCatenin,[],0,inf;
+
+
+// mRNA degradation -
+mRNA_smad_degradation,[],mRNA_smad,[],0,inf;
+mRNA_snail_degradation,[],mRNA_snail,[],0,inf;
+mRNA_cadherin_degrdation,[],mRNA_cadherin,[],0,inf;
+mRNA_catenin_degrdation,[],mRNA_catenin,[],0,inf;
+mRNA_TCF4_degrdation,[],mRNA_TCF4,[],0,inf;
+mRNA_TGFB3_degrdation,[],mRNA_TGFB3,[],0,inf;
+mRNA_YREG1_degrdation,[],mRNA_YREG1,[],0,inf;
+mRNA_LEF1_degrdation,[],mRNA_LEF1,[],0,inf;
+mRNA_AP1_degrdation,[],mRNA_AP1,[],0,inf;
+mRNA_vimentin_degradation,[],mRNA_vimentin,[],0,inf;
+mRNA_R_degradation,[],mRNA_R,[],0,inf;
+mRNA_VEGFR_degradation,[],mRNA_VEGFR,[],0,inf;
+mRNA_NFATc_degradation,[],mRNA_NFATc,[],0,inf;
+mRNA_CaM_degradation,[],mRNA_CaM,[],0,inf;
+mRNA_MAPK_degradation,[],mRNA_MAPK,[],0,inf;
+
+// Infrastructure - // add an subtract things into the system
+generation_RNAP,[],RNAP,[],-inf,inf; // braket refers to "system" coming from somewhere, 1st order synthesis rate // supply and degredation
+generation_RIBOSOME,[],RIBOSOME,[],-inf,inf; // Names always have to be unique
+addition_U0126,[],U0126,[],-inf,inf; // MEK inhibitor (can vary the dose profile dynamics)
+addition_TGFB3_Ab,[],TGFB3_Ab,[],-inf,inf; // all mrna and protein should have a degredation term (reasonable to start mRNAs at same deg rate initially)
+
+// ============================================================ //
+// Control terms signal transduction -
+#pragma handler_class = VLCGSignalTransductionControlParserDelegate
+//
+// Record:
+// name (unique),actor,target,{inhibition|activation};
+// ============================================================ //
+MAPK_inhibitor,U0126,TGFB_R_phosphorylation_MAPK,inhibition; // how does inhibitor influence MAPK 'actor--what is doing the inhibiting or activating, control like a hill function // kinetic rate * control term(usually 1, unless inhibitor/activator is present) // see model filed
+TGFB3_inhibition,TGFB3_Ab,TGFB3_binding,inhibition;
+
+// ============================================================ //
+// Gene expression reactions - // again, separately gene epxression process from control
+#pragma handler_class = VLCGGeneExpressionParserDelegate
+//
+// Record:
+// name (unique),gene_symbol,mRNA_symbol,polymerase_symbol;
+// ============================================================ //
+induction_gene_smad,gene_smad,mRNA_smad,RNAP; // if not control term, then expressed constituatevly k*gene_smad(0or1)*RNAP // no hogging RNAP, ust one pool
+induction_gene_snail,gene_snail,mRNA_snail,RNAP;
+induction_gene_cadherin,gene_cadherin,mRNA_cadherin,RNAP;
+induction_gene_catenin,gene_catenin,mRNA_catenin,RNAP;
+induction_gene_TCF4,gene_TCF4,mRNA_TCF4,RNAP;
+induction_gene_TGFB3,gene_TGFB3,mRNA_TGFB3,RNAP;
+induction_gene_YREG1,gene_YREG1,mRNA_YREG1,RNAP;
+induction_gene_LEF1,gene_LEF1,mRNA_LEF1,RNAP;
+induction_gene_AP1,gene_AP1,mRNA_AP1,RNAP;
+induction_gene_vimentin,gene_vimentin,mRNA_vimentin,RNAP;
+induction_gene_R,gene_R,mRNA_R,RNAP;
+induction_gene_VEGFR,gene_VEGFR,mRNA_VEGFR,RNAP;
+induction_gene_NFATc,gene_NFATc,mRNA_NFATc,RNAP;
+induction_gene_CaM,gene_CaM,mRNA_CaM,RNAP;
+induction_gene_MAPK,gene_MAPK,mRNA_MAPK,RNAP;
+
+// ============================================================ //
+// Translation reactions -
+#pragma handler_class = VLCGTranslationParserDelegate
+//
+// Record:
+// name (unique),mRNA_symbol,protein_symbol,ribosome_symbol;
+// ============================================================ //
+translation_mRNA_smad,mRNA_smad,Smad,RIBOSOME;
+translation_mRNA_snail,mRNA_snail,Snail,RIBOSOME;
+translation_mRNA_cadherin,mRNA_cadherin,ECadherin,RIBOSOME;
+translation_mRNA_catenin,mRNA_catenin,BCatenin,RIBOSOME;
+translation_mRNA_TCF4,mRNA_TCF4,TCF4,RIBOSOME;
+translation_mRNA_TGFB3,mRNA_TGFB3,TGFB3,RIBOSOME;
+translation_mRNA_YREG1,mRNA_YREG1,YREG1,RIBOSOME;
+translation_mRNA_LEF1,mRNA_LEF1,LEF1,RIBOSOME;
+translation_mRNA_AP1,mRNA_AP1,AP1,RIBOSOME;
+translation_mRNA_vimentin,mRNA_vimentin,Vimentin,RIBOSOME;
+translation_mRNA_R,mRNA_R,R,RIBOSOME;
+translation_mRNA_VEGFR,mRNA_VEGFR,VEGFR,RIBOSOME;
+translation_mRNA_NFATc,mRNA_NFATc,NFATc,RIBOSOME;
+translation_mRNA_CaM,mRNA_CaM,CaM,RIBOSOME;
+translation_mRNA_MAPK,mRNA_MAPK,MAPK,RIBOSOME;
+// can hack by just making protein
+
+// ============================================================ //
+// Control terms gene expression -
+#pragma handler_class = VLCGGeneExpressionControlParserDelegate
+//
+// Record:
+// name (unique),actor_symbol,target_symbol,{induction|repression};
+// ============================================================ //
+induction_gene_snail_by_AP1,pAP1*pSmad,induction_gene_snail,induction; // the product (AND of AP1 and Smad)
+//induction_gene_snail_by_pSmad,pSmad,induction_gene_snail,induction; // between commas is just a line of code
+repression_gene_cadherin,Snail,induction_gene_cadherin,repression; // use no spaces, only underscore,
+activation_gene_cadherin_NFATc,pNFATc,induction_gene_cadherin,repression;
+induction_gene_TGFB3_by_Active_TCF4,Active_TCF4,induction_gene_TGFB3,induction; // no constituative activation at all -- off by default
+repression_YREG1_by_snail,Snail,induction_gene_YREG1,repression; // all genes are on by default, unless overridden by control (induction, set to 0) (repression, set to 1, but check)
+repression_LEF1_by_YREG1,YREG1,induction_gene_LEF1,repression;
+activation_vimentin_by_Active_LEF1,Active_LEF1,induction_gene_vimentin,induction;
