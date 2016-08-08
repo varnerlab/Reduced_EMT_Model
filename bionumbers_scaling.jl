@@ -41,7 +41,7 @@ kcat_transcription = max_transcription_rate*(3600/average_transcript_length)  # 
 kcat_translation = max_translation_rate*(3600/average_protein_length)  # hr^-1
 
 # Maximum specific growth rate -
-maximum_specific_growth_rate = (1/doubling_time_hl60)*log(2) # 0.0355 # hr^-1 
+maximum_specific_growth_rate = (1/doubling_time_hl60)*log(2) # 0.0355 # hr^-1
 
 # What is the average gene concentration -
 avg_gene_concentration = avg_gene_number*(1/av_number)*(1/V)*1e9  #\nM
@@ -61,3 +61,6 @@ saturation_translation = 100000*(1/av_number)*(1/V)*1e9
 
 const_transcription = kcat_transcription/saturation_transcription
 const_translation   = kcat_translation/saturation_translation
+
+eg_transciption_rate = 1.0 * const_transcription * rnapII_concentration
+eg_translation_rate = 1.0 * const_translation * ribosome_concentration

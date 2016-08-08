@@ -86,6 +86,7 @@ deactivation_GSK3_P,PPase,GSK3_P,GSK3,0,inf;
 degradation_TGFB12_R,[],TGFB12_R,[],0,inf;
 degradation_TGFB3_R,[],TGFB3_R,[],0,inf;
 degradation_TGFB3,[],TGFB3,[],0,inf;
+VEGF_VEGFR_degradation,[],VEGF_VEGFR,[],0,inf;
 
 Bcatenin_degradation,[],Bcatenin,[],0,inf;
 Ecadherin_degrdation,[],Ecadherin,[],0,inf;
@@ -123,9 +124,11 @@ Active_PKC_degradation,[],Active_PKC,[],0,inf;
 Calcineurin_degradation,[],Calcineurin,[],0,inf;
 Active_Calcineurin_degradation,[],Active_Calcineurin,[],0,inf;
 
-degradation_APC_AXIN_degradation,[],APC_AXIN,[],0,inf;
-degradation_GSK3_P_degradation,[],GSK3_P,[],0,inf;
-degradation_APC_AXIN_Bcatenin_degradation,[],APC_AXIN_Bcatenin,[],0,inf;
+degradation_APC_AXIN,[],APC_AXIN,[],0,inf;
+degradation_GSK3_P,[],GSK3_P,[],0,inf;
+degradation_GSK3,[],GSK3,[],0,inf;
+degradation_PI3K,[],PI3K,[],0,inf;
+degradation_APC_AXIN_Bcatenin,[],APC_AXIN_Bcatenin,[],0,inf;
 
 
 // Loading control
@@ -133,28 +136,7 @@ tubulin_degradation,[],tubulin,[],0,inf;
 
 
 // mRNA degradation -
-mRNA_Smad_degradation,[],mRNA_Smad,[],0,inf;
-mRNA_Ecadherin_degradation,[],mRNA_Ecadherin,[],0,inf;
-mRNA_Bcatenin_degradation,[],mRNA_Bcatenin,[],0,inf;
-mRNA_TCF4_degradation,[],mRNA_TCF4,[],0,inf;
-mRNA_TGFB3_degradation,[],mRNA_TGFB3,[],0,inf;
-mRNA_YREG1_degradation,[],mRNA_YREG1,[],0,inf;
-mRNA_LEF1_degradation,[],mRNA_LEF1,[],0,inf;
-mRNA_vimentin_degradation,[],mRNA_vimentin,[],0,inf;
-mRNA_VEGFR_degradation,[],mRNA_VEGFR,[],0,inf;
-mRNA_NFATc_degradation,[],mRNA_NFATc,[],0,inf;
-mRNA_R_degradation,[],mRNA_R,[],0,inf;
-mRNA_MAPK_degradation,[],mRNA_MAPK,[],0,inf;
-mRNA_tubulin_degradation,[],mRNA_tubulin,[],0,inf;
-mRNA_SNAIL_SLUG_degradation,[],mRNA_SNAIL_SLUG,[],0,inf;
-mRNA_RAS_degradation,[],mRNA_RAS,[],0,inf;
-mRNA_RAF_degradation,[],mRNA_RAF,[],0,inf;
-mRNA_PLCy_degradation,[],mRNA_PLCy,[],0,inf;
-mRNA_PKC_degradation,[],mRNA_PKC,[],0,inf;
-mRNA_Calcineurin_degradation,[],mRNA_Calcineurin,[],0,inf;
-mRNA_AP1_SP1_degradation,[],mRNA_AP1_SP1,[],0,inf;
-
-VEGF_VEGFR_degradation,[],VEGF_VEGFR,[],0,inf;
+// exist upon induction call
 
 // Infrastructure - // add an subtract things into the system
 // bracket refers to "system" coming from somewhere, 1st order synthesis rate // supply and degradation
@@ -167,6 +149,9 @@ generation_PPase,[],PPase,[],-inf,inf;
 
 // MEK inhibitor (can vary the dose profile dynamics) // already included below
 addition_U0126,[],U0126,[],-inf,inf;
+
+// Vivit (NFAT inhibitor)
+addition_vivit,[],vivit,[],-inf,inf;
 
 // all mrna and protein should have a degradation term (reasonable to start mRNAs at same deg rate initially)
 addition_TGFB3_Ab,[],TGFB3_Ab,[],-inf,inf;
@@ -183,6 +168,7 @@ addition_ecad_virus,[],ecad_virus,[],-inf,inf;
 addition_TGFb12,[],[],TGFB12,-inf,inf;
 addition_VEGF,[],[],VEGF,-inf,inf;
 addition_TGFB3,[],[],TGFB3,-inf,inf;
+addition_vivit,[],[],vivit,-inf,inf;
 
 // ============================================================ //
 // Control terms signal transduction -
@@ -194,8 +180,9 @@ addition_TGFB3,[],[],TGFB3,-inf,inf;
 // how does inhibitor influence MAPK 'actor--what is doing the inhibiting or activating, control like a hill function
 // kinetic rate * control term(usually 1, unless inhibitor/activator is present)
 // see model filed
-MAPK_inhibitor,U0126,RAF_P_phosphorylation,inhibition;
+MAPK_inhibition,U0126,RAF_P_phosphorylation,inhibition;
 TGFB3_inhibition,TGFB3_Ab,TGFB3_binding,inhibition;
+NFATc_inhibition,vivit,Calcineurin_activation_NFATc,inhibition;
 
 Active_TCF4_inhibition_Ecad,Ecadherin_Bcatenin,TCF4_Bcatenin_complex_formation,inhibition;
 Active_TCF4_inhibition_APC,APC_AXIN_Bcatenin,TCF4_Bcatenin_complex_formation,inhibition;

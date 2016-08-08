@@ -447,6 +447,7 @@ push!(rate_vector,tmp);
 
 # 75 tubulin_degradation: tubulin =([])=> []
 tmp = rate_constant_array[75]*(tubulin);
+#@show tmp, "deg rate tubulin", tubulin
 push!(rate_vector,tmp);
 
 # 76 mRNA_Smad_degradation: mRNA_Smad =([])=> []
@@ -875,6 +876,7 @@ push!(rate_vector,tmp);
 
 # 182 translation_mRNA_tubulin: mRNA_tubulin = tubulin
 tmp = rate_constant_array[182]*mRNA_tubulin*RIBOSOME;
+#@show tmp, "translation rate tubulin", mRNA_tubulin
 push!(rate_vector,tmp);
 
 # 183 translation_mRNA_APC_AXIN: mRNA_APC_AXIN = APC_AXIN

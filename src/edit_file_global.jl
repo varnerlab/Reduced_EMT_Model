@@ -52,7 +52,7 @@ tcf4_trans_rate = 0.5 # 0.5
 
 snail_slug_trans_rate = 1.0 # increases lef1 mrna too much
 
-yreg_deg_rate = 2.0 # 1.5
+yreg_deg_rate = 0.1 # 1.5
 
 ### SELECTED DATA FILE INDEXES
 

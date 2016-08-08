@@ -45,7 +45,7 @@ push!(rate_constant_update_array,[TGFB3_reverse_rate_index,0.1])
 
 #
 # DN SMAD temoprary
-smad_induction_rate = 0.01
+smad_induction_rate = 0.000000001 # 0.01
 smad_deg_rate = 1.0
 psmad_deg_rate = 1.0
 push!(rate_constant_update_array,[smad_induction_rate_index,smad_induction_rate])

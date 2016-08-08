@@ -28,7 +28,7 @@ push!(rate_constant_update_array,[U0126_foward_rate_index,4.0])
 push!(rate_constant_update_array,[U0126_reverse_rate_index,0.1])
 
 # This is effectivly a hack to prevent me from needing to regenerate the model
-push!(rate_constant_update_array,[raf_mapk_phos_rate_index,0.01])
+push!(rate_constant_update_array,[raf_mapk_phos_rate_index,0.0001]) #0.01 
 
 # ECADHERINchange this to transcription rate
 # push!(rate_constant_update_array,[ecad_trans_rate_index,ecad_trans_rate*5.0])

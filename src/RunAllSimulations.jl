@@ -34,9 +34,9 @@ control_parameter_array[5,1]=0.3 # GAIN # activation_Ecadherin_by_Active_NFATc
 # repression_Ecadherin_by_pSmad: pSmad repression induction_gene_Ecadherin
 control_parameter_array[6,1]=1.0 # GAIN # REP_ECAD_PSMAD
 # repression_Ecadherin_by_SNAIL_SLUG: SNAIL_SLUG repression induction_gene_Ecadherin
-control_parameter_array[7,1]=2.0 # GAIN_SNAIL_SLUG_ECAD
+control_parameter_array[7,1]=0.5 # GAIN_SNAIL_SLUG_ECAD #2.0
 # repression_Ecadherin_by_Active_LEF1: Active_LEF1 repression induction_gene_Ecadherin
-control_parameter_array[8,1]=12.0# GAIN_ACTIVE_LEF1_ECAD
+control_parameter_array[8,1]=0.5# GAIN_ACTIVE_LEF1_ECAD #2.0
 #  control_parameter_array[6,1]=0.3 # GAIN_BCAT_TGFB3
 # activation_Ecadherin_by_ecad_virus: ecad_virus induction induction_gene_Ecadherin
 control_parameter_array[9,1]=0.5 # ecad_virus ***
@@ -68,14 +68,15 @@ data_dictionary["CONTROL_PARAMETER_ARRAY"]=control_parameter_array
 println("Running to steady state ... ")
 
 # # # STEADY STATE
-@show data_dictionary["RATE_CONSTANT_ARRAY"][141]
+#@show data_dictionary["RATE_CONSTANT_ARRAY"][141] # here
 
 println(now())
-XSS = EstimateSteadyState(data_dictionary)
+# WARNING data_dicionary will be edited within EstimateSteadyState unless copy/deepcopy used!
+XSS = EstimateSteadyState(deepcopy(data_dictionary))
 println(now())
 initial_condition_array = vec(XSS);
 #println(initial_condition_array) ###
-@show data_dictionary["RATE_CONSTANT_ARRAY"][141]
+#@show data_dictionary["RATE_CONSTANT_ARRAY"][141]
 
 writedlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/xss.dat", XSS)
 
