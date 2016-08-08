@@ -1,0 +1,18 @@
+Balances.jl:include("Kinetics.jl");
+Balances.jl:include("Control.jl");
+RunAllSimulations.jl:include("new_SimulationFunctions.jl")
+Solve.jl:include("DataFile.jl")
+Solve.jl:include("SolveBalances.jl")
+SolveBalances.jl:include("Balances.jl")
+new_SimulationFunctions.jl:include("DataFile.jl")
+new_SimulationFunctions.jl:include("SolveBalances.jl")
+new_SimulationFunctions.jl:  include("edit_file_global.jl")
+new_SimulationFunctions.jl:  include("edit_file_ss.jl")
+new_SimulationFunctions.jl:  include("edit_file_global.jl")
+new_SimulationFunctions.jl:  include("edit_file_vegf.jl")
+new_SimulationFunctions.jl:  include("edit_file_global.jl")
+new_SimulationFunctions.jl:  include("edit_file_global.jl")
+new_SimulationFunctions.jl:  include(simulation)
+
+# enter each file
+# replace include(" with include("/Users/dbassen/work/KwateeServer-v1.0/src/
