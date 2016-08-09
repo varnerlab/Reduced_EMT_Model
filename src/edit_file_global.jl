@@ -66,14 +66,14 @@ vegf_initial_cond_index = 93 # VEGF
 
 # TGFB signaling
 tgfb3_binding_rate_index = 3 # TGFB3_binding: TGFB3+R =([])=> TGFB3_R
-R_deg_rate_index = 56 # degradation_R: R =([])=> []
+R_deg_rate_index = 57 # degradation_R: R =([])=> []
 TGFB12_R_activation_RAS_rate_index = 16 # TGFB12_R_activation_RAS: RAS =(TGFB12_R)=> RAS_GTP
 RAS_activation_RAF_rate_index  = 17 # RAS_GTP_phosphorylation_RAF: RAF =(RAS_GTP)=> RAF_P
 RAF_activation_MAPK_rate_index = 18 # RAF_P_phosphorylation_MAPK: MAPK =(RAF_P)=> pMAPK
 MAPK_activation_AP1_SP1_rate_index = 20 # MAPK_phosphorylation_AP1_SP1: AP1_SP1 =(pMAPK)=> AP1_SP1_P
 MAPK_activation_smad_rate_index = 19 # MAPK_phosphorylation_Smad: Smad =(pMAPK)=> pSmad
-smad_deg_rate_index = 44 # Smad_degradation: Smad =([])=> []
-psmad_deg_rate_index = 65 # pSmad_degradation: pSmad =([])=> []
+smad_deg_rate_index = 45 # Smad_degradation: Smad =([])=> []
+psmad_deg_rate_index = 66 # pSmad_degradation: pSmad =([])=> []
 
 # Bcatenin complex formation
 bcat_ecad_forward_index = 21 # Binding_Ecadherin_Bcatenin: Ecadherin+Bcatenin =([])=> Ecadherin_Bcatenin
@@ -83,80 +83,84 @@ bcat_tcf4_forward_index = 25 # TCF4_Bcatenin_complex_formation: TCF4+Bcatenin =(
 bcat_tcf4_reverse_index = 26 # TCF4_Bcatenin_complex_formation: Active_TCF4 =([])=> TCF4+Bcatenin (reverse)
 bcat_lef1_forward_index = 27 # LEF1_Bcatenin_complex_formation: LEF1+Bcatenin =([])=> Active_LEF1
 bcat_lef1_reverse_index = 28 # LEF1_Bcatenin_complex_formation: Active_LEF1 =([])=> LEF1+Bcatenin (reverse)
-bcat_deg_rate_index = 42 # Bcatenin_degradation: Bcatenin =([])=> []
-bcat_trans_rate_index = 165 # translation_mRNA_Bcatenin: mRNA_Bcatenin = Bcatenin
+bcat_deg_rate_index = 43 # Bcatenin_degradation: Bcatenin =([])=> []
+bcat_trans_rate_index = 149 # translation_mRNA_Bcatenin: mRNA_Bcatenin = Bcatenin
 
-ecad_bcat_degradation_rate_index = 57 # Ecadherin_Bcatenin_degradation: Ecadherin_Bcatenin =([])=> []
-
+ecad_bcat_degradation_rate_index = 58 # Ecadherin_Bcatenin_degradation: Ecadherin_Bcatenin =([])=> []
 
 
 # VEGF signaing
 PKC_activation_RAF_rate_index = 11 # PKC_activation_RAF: RAF =(Active_PKC)=> RAF_P
 
-snail_slug_trans_rate_index = 159 # induction_gene_SNAIL_SLUG: gene_SNAIL_SLUG = mRNA_SNAIL_SLUG
-lef1_trans_rate_index = 169 # translation_mRNA_LEF1: mRNA_LEF1 = LEF1
+snail_slug_trans_rate_index = 143 # induction_gene_SNAIL_SLUG: gene_SNAIL_SLUG = mRNA_SNAIL_SLUG
+lef1_trans_rate_index = 153 # translation_mRNA_LEF1: mRNA_LEF1 = LEF1
 
 apc_complex_forward_rate_index = 23 # Binding_APC_AXIN_forw: APC_AXIN+Bcatenin =([])=> APC_AXIN_Bcatenin
 tgfb3_pik3_rate_index = 14 # TGFB3_R_phosphorylation_PI3K: PI3K =(TGFB3_R)=> PI3K_P
-apc_bcat_deg_rate_index = 74 # degradation_APC_AXIN_Bcatenin_degradation: APC_AXIN_Bcatenin =([])=> []
+apc_bcat_deg_rate_index = 77 # degradation_APC_AXIN_Bcatenin: APC_AXIN_Bcatenin =([])=> []
 gsk3_p_rate_index = 15 # PI3K_phosphorylation_GSK3: GSK3 =(PI3K_P)=> GSK3_P
-pi3k_translation_rate_index = 185 # translation_mRNA_PI3K: mRNA_PI3K = PI3K
-apc_complex_trans_rate_index = 183 # translation_mRNA_APC_AXIN: mRNA_APC_AXIN = APC_AXIN
+pi3k_translation_rate_index = 169 # translation_mRNA_PI3K: mRNA_PI3K = PI3K
+apc_complex_trans_rate_index = 167 # translation_mRNA_APC_AXIN: mRNA_APC_AXIN = APC_AXIN
 
 #ecad bcat balance
-ecad_trans_rate_index = 164 # translation_mRNA_Ecadherin: mRNA_Ecadherin = Ecadherin
-ecad_deg_rate_index = 43 # Ecadherin_degrdation: Ecadherin =([])=> []
-ecad_transc_rate_index = 141 # induction_gene_Ecadherin: gene_Ecadherin = mRNA_Ecadherin
+ecad_trans_rate_index = 148 # translation_mRNA_Ecadherin: mRNA_Ecadherin = Ecadherin
+ecad_deg_rate_index = 44 # Ecadherin_degrdation: Ecadherin =([])=> []
+ecad_transc_rate_index = 125 # induction_gene_Ecadherin: gene_Ecadherin = mRNA_Ecadherin
 # TGFB dosing
-tgfb12_forward_rate_index = 111 # addition_TGFb12: [] =([])=> TGFB12
-tgfb12_reverse_rate_index = 112 # addition_TGFb12: TGFB12 =([])=> [] (reverse)
+tgfb12_forward_rate_index = 91 # addition_TGFb12: [] =([])=> TGFB12
+tgfb12_reverse_rate_index = 92 # addition_TGFb12: TGFB12 =([])=> [] (reverse)
 tgfb12_binding_rate_index = 1 # TGFB12_binding: TGFB12+R =([])=> TGFB12_R
 
 # VEGF dosing
-vegf_forward_rate_index = 113 # addition_VEGF: [] =([])=> VEGF
-vegf_reverse_rate_index = 114 # addition_VEGF: VEGF =([])=> [] (reverse)
+vegf_forward_rate_index = 93 # addition_VEGF: [] =([])=> VEGF
+vegf_reverse_rate_index = 94 # addition_VEGF: VEGF =([])=> [] (reverse)
 vegf_binding_rate_index = 5 # VEGF_binding: VEGF+VEGFR =([])=> VEGF_VEGFR
 
 # TGFB3_Ab dosing
-TGFB3_Ab_foward_rate_index = 106 # addition_TGFB3_Ab: [] =([])=> TGFB3_Ab (reverse)
-TGFB3_Ab_reverse_rate_index = 105 # addition_TGFB3_Ab: TGFB3_Ab =([])=> []
+TGFB3_Ab_foward_rate_index = 86 # addition_TGFB3_Ab: [] =([])=> TGFB3_Ab (reverse)
+TGFB3_Ab_reverse_rate_index = 85 # addition_TGFB3_Ab: TGFB3_Ab =([])=> []
 
 # U0126 dosing
-U0126_foward_rate_index = 104 # addition_U0126: [] =([])=> U0126 (reverse)
-U0126_reverse_rate_index = 103 # addition_U0126: U0126 =([])=> []
+U0126_foward_rate_index = 98 # addition_U0126: [] =([])=> U0126 (reverse)
+U0126_reverse_rate_index = 97 # addition_U0126: U0126 =([])=> []
 
 # TGFB3 dosing
-TGFB3_foward_rate_index = 115 # addition_TGFB3: [] =([])=> TGFB3
-TGFB3_reverse_rate_index = 116 # addition_TGFB3: TGFB3 =([])=> [] (reverse)
+TGFB3_foward_rate_index = 95 # addition_TGFB3: [] =([])=> TGFB3
+TGFB3_reverse_rate_index = 96 # addition_TGFB3: TGFB3 =([])=> [] (reverse)
 tgfb12_to_smad_rate_index = 12 # TGFB12_R_phosphorylation_Smad: Smad =(TGFB12_R)=> pSmad
 tgfb3_to_smad_gain_rate_index = 13 # TGFB3_R_phosphorylation_Smad: Smad =(TGFB3_R)=> pSmad
 
+# vivit
+
+vivit_foward_rate_index  = 100 # addition_vivit: [] =([])=> vivit (reverse)
+vivit_reverse_rate_index = 99 # addition_vivit: vivit =([])=> []
+
 # Snail slug transfeciton
-ss_virus_forward_rate_index = 108 # addition_ss_virus: [] =([])=> ss_virus (reverse)
-ss_virus_reverse_rate_index = 107 # addition_ss_virus: ss_virus =([])=> []
+ss_virus_forward_rate_index = 88 # addition_ss_virus: [] =([])=> ss_virus (reverse)
+ss_virus_reverse_rate_index = 87 # addition_ss_virus: ss_virus =([])=> []
 
 # Ecadherin transfection
-ecad_virus_forward_rate_index = 110 # addition_ecad_virus: [] =([])=> ecad_virus (reverse)
-ecad_virus_reverse_rate_index = 109 # addition_ecad_virus: ecad_virus =([])=> []
+ecad_virus_forward_rate_index = 90 # addition_ecad_virus: [] =([])=> ecad_virus (reverse)
+ecad_virus_reverse_rate_index = 89 # addition_ecad_virus: ecad_virus =([])=> []
 # DN smad
 # DN SMAD temoprary
-smad_induction_rate_index = 140 # induction_gene_Smad: gene_Smad = mRNA_Smad
-psmad_deg_rate_index = 65 # pSmad_degradation: pSmad =([])=> []
+smad_induction_rate_index = 124 # induction_gene_Smad: gene_Smad = mRNA_Smad
+psmad_deg_rate_index = 66 # pSmad_degradation: pSmad =([])=> []
 # reverse convention based on product term
 #smad_virus_forward_rate_index = 146 # addition_smad_virus: [] =([])=> smad_virus (reverse)
 #smad_virus_reverse_rate_index = 122 # addition_smad_virus: smad_virus =([])=> []
 
 # DN 1
-lef1_induction_rate_index = 146 # induction_gene_LEF1: gene_LEF1 = mRNA_LEF1
+lef1_induction_rate_index = 130 # induction_gene_LEF1: gene_LEF1 = mRNA_LEF1
 # reverse convention based on product term
 #LEF1_virus_forward_rate_index = 18 # addition_lef1_virus: [] =([])=> lef1_virus (reverse)
 #LEF1_virus_reverse_rate_index = 111 # addition_lef1_virus: lef1_virus =([])=> []
 
 #yreg_deg_rate_index = 122 # degradation_mRNA_YREG1: mRNA_YREG1 = []
-yreg_deg_rate_index = 81 # mRNA_YREG1_degradation: mRNA_YREG1 =([])=> []
+yreg_deg_rate_index = 150 # mRNA_YREG1_degradation: mRNA_YREG1 =([])=> []
 
 
-tcf4_trans_rate_index = 166 # translation_mRNA_TCF4: mRNA_TCF4 = TCF4
+tcf4_trans_rate_index = 18 # translation_mRNA_TCF4: mRNA_TCF4 = TCF4
 
 # MAPK inhibitor
 # ?
@@ -203,6 +207,10 @@ push!(rate_constant_update_array,[TGFB3_Ab_reverse_rate_index,0.0])
 # U0126 dosing
 push!(rate_constant_update_array,[U0126_foward_rate_index ,0.0])
 push!(rate_constant_update_array,[U0126_reverse_rate_index,0.0])
+
+# vivit dosing
+push!(rate_constant_update_array,[vivit_foward_rate_index,0.0])
+push!(rate_constant_update_array,[vivit_reverse_rate_index,0.0])
 
 ## Virus dosing
 

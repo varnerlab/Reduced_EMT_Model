@@ -30,7 +30,7 @@ function Balances(t,x,dxdt_vector,data_dictionary)
 # Username: jeffreyvarner
 # Type: GRN-JULIA
 # Version: 1.0
-# Generation timestamp: 06-24-2016 14:59:02
+# Generation timestamp: 08-08-2016 20:01:41
 #
 # Arguments:
 # t  - current time
@@ -62,14 +62,12 @@ number_of_states = length(tmp_vector);
 for state_index in collect(1:number_of_states)
 	dxdt_vector[state_index] = tau_array[state_index]*(tmp_vector[state_index] - maximum_specific_growth_rate*dilution_selection_array[state_index]*(x[state_index]));
 end
+
 # set ribosome and RNAP rates to 0
 dxdt_vector[65] = 0;
 dxdt_vector[66] = 0;
 # set ppase rate to 0
 dxdt_vector[60] = 0;
-
-# OK now fix PI3K and GSK3 and APC_AXIN
-
 
 # Correct extracellular species -
 cellmass = Cellmass(t,x,data_dictionary);

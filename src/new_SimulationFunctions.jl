@@ -12,16 +12,15 @@ using Debug
 # =============================================================================== #
 
 # addition indices
-addition_start,addition_end = 104,116
+addition_start,addition_end = 85,100
 
 # mRNA / transcriptional indices
-script_start,script_end = 140,162
-mdeg_start,mdeg_end = 76,95
+mdeg_start,mdeg_end = 101,123
+script_start,script_end = 124,146
 
 # protein / translational indices
-lation_start,lation_end = 163,185
-pdeg_start,pdeg_end = 39,75
-
+pdeg_start,pdeg_end = 39,78
+lation_start,lation_end = 147,169
 
 #@debug
 # Run the model to steady state -
@@ -56,7 +55,7 @@ pdeg_start,pdeg_end = 39,75
   current_data_dictionary["RATE_CONSTANT_ARRAY"] = rate_constant_array
 
 # 137 - 139
-rate_constant_array[137:139]=30*rate_constant_array[137:139]*degradation_constant_mRNA
+# rate_constant_array[137:139]=30*rate_constant_array[137:139]*degradation_constant_mRNA
 
 
   #UpdateArray(data_dictionary,"CONTROL_PARAMETER_ARRAY",control_parameter_update_array)
@@ -160,7 +159,7 @@ function SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim_RCA)
   data_dictionary_active["RATE_CONSTANT_ARRAY"] = rate_constant_array
 
 # 137 - 139
-rate_constant_array[137:139]=30*rate_constant_array[137:139]*degradation_constant_mRNA
+# rate_constant_array[137:139]=30*rate_constant_array[137:139]*degradation_constant_mRNA
 
 #
 
