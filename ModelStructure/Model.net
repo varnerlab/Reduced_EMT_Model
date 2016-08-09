@@ -145,14 +145,6 @@ generation_RNAP,[],RNAP,[],-inf,inf;
 generation_RIBOSOME,[],RIBOSOME,[],-inf,inf;
 generation_PPase,[],PPase,[],-inf,inf;
 
-
-
-// MEK inhibitor (can vary the dose profile dynamics) // already included below
-addition_U0126,[],U0126,[],-inf,inf;
-
-// Vivit (NFAT inhibitor)
-addition_vivit,[],vivit,[],-inf,inf;
-
 // all mrna and protein should have a degradation term (reasonable to start mRNAs at same deg rate initially)
 addition_TGFB3_Ab,[],TGFB3_Ab,[],-inf,inf;
 
@@ -168,7 +160,14 @@ addition_ecad_virus,[],ecad_virus,[],-inf,inf;
 addition_TGFb12,[],[],TGFB12,-inf,inf;
 addition_VEGF,[],[],VEGF,-inf,inf;
 addition_TGFB3,[],[],TGFB3,-inf,inf;
-addition_vivit,[],[],vivit,-inf,inf;
+
+
+// MEK inhibitor (can vary the dose profile dynamics) // already included below
+addition_U0126,[],U0126,[],-inf,inf;
+
+// Vivit (NFAT inhibitor)
+addition_vivit,[],vivit,[],-inf,inf;
+
 
 // ============================================================ //
 // Control terms signal transduction -
