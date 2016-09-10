@@ -1,0 +1,11 @@
+mkdir fold_pop_obj_1
+mkdir fold_pop_obj_2
+mkdir fold_pop_obj_3
+mkdir fold_pop_obj_4
+mkdir fold_pop_obj_5
+mkdir fold_pop_obj_6
+mkdir fold_pop_obj_7
+mkdir fold_pop_obj_8
+mkdir fold_pop_obj_9
+mkdir fold_pop_obj_10
+mkdir fold_pop_obj_11

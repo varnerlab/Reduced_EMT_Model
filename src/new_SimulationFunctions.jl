@@ -22,6 +22,9 @@ script_start,script_end = 124,146
 pdeg_start,pdeg_end = 39,78
 lation_start,lation_end = 147,169
 
+# Transcriptional mult
+tscript_mult = 0.2 # 0.033
+
 #@debug
 # Run the model to steady state -
  function EstimateSteadyState(current_data_dictionary)
@@ -43,14 +46,14 @@ lation_start,lation_end = 147,169
   UpdateArray(current_data_dictionary,"RATE_CONSTANT_ARRAY",rate_constant_update_array)
 
   rate_constant_array = copy(current_data_dictionary["RATE_CONSTANT_ARRAY"]);
-  rate_constant_array[script_start:script_end]=0.033*rate_constant_array[script_start:script_end]*const_transcription
+  rate_constant_array[script_start:script_end]=tscript_mult*rate_constant_array[script_start:script_end]*const_transcription
   rate_constant_array[lation_start:lation_end]=rate_constant_array[lation_start:lation_end]*const_translation
   #@show rate_constant_array[140:162]
  # Just try to adjust dosage level by similiar amount as protein (?)
   rate_constant_array[addition_start:addition_end]=10*rate_constant_array[addition_start:addition_end]#*const_translation
 
 # factor of 10 just corrects for a 0.1 "gamma/delta" value in the data file
-  rate_constant_array[mdeg_start:mdeg_end]=30*rate_constant_array[mdeg_start:mdeg_end]*degradation_constant_mRNA
+  rate_constant_array[mdeg_start:mdeg_end]=10*rate_constant_array[mdeg_start:mdeg_end]*degradation_constant_mRNA
   rate_constant_array[pdeg_start:pdeg_end]=10*rate_constant_array[pdeg_start:pdeg_end]*degradation_constant_protein
   current_data_dictionary["RATE_CONSTANT_ARRAY"] = rate_constant_array
 
@@ -134,7 +137,6 @@ lation_start,lation_end = 147,169
 end
 
 
-
 function SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim_RCA)
 
   include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
@@ -147,14 +149,14 @@ function SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim_RCA)
   UpdateArray(data_dictionary_active,"RATE_CONSTANT_ARRAY",sim_RCA)
   # Run the simulation -
   rate_constant_array = data_dictionary_active["RATE_CONSTANT_ARRAY"];
-  rate_constant_array[script_start:script_end]=0.033*rate_constant_array[script_start:script_end]*const_transcription
+  rate_constant_array[script_start:script_end]=tscript_mult*rate_constant_array[script_start:script_end]*const_transcription
   rate_constant_array[lation_start:lation_end]=rate_constant_array[lation_start:lation_end]*const_translation
   #@show rate_constant_array[140:162]
  # Just try to adjust dosage level by similiar amount as protein (?)
   rate_constant_array[addition_start:addition_end]=10*rate_constant_array[addition_start:addition_end]#*const_translation
 
 # factor of 10 just corrects for a 0.1 "gamma/delta" value in the data file
-  rate_constant_array[mdeg_start:mdeg_end]=30*rate_constant_array[mdeg_start:mdeg_end]*degradation_constant_mRNA
+  rate_constant_array[mdeg_start:mdeg_end]=10*rate_constant_array[mdeg_start:mdeg_end]*degradation_constant_mRNA
   rate_constant_array[pdeg_start:pdeg_end]=10*rate_constant_array[pdeg_start:pdeg_end]*degradation_constant_protein
   data_dictionary_active["RATE_CONSTANT_ARRAY"] = rate_constant_array
 
@@ -197,6 +199,18 @@ end
 function SolveModelGenericPOETS_ram(TSTART,TSTOP,Ts,local_data_dictionary,sim_RCA)
   # Set simulation rate constants
   UpdateArray(local_data_dictionary,"RATE_CONSTANT_ARRAY",sim_RCA)
+  # Scale parameters
+  rate_constant_array = local_data_dictionary["RATE_CONSTANT_ARRAY"];
+  rate_constant_array[script_start:script_end]=tscript_mult*rate_constant_array[script_start:script_end]*const_transcription
+  rate_constant_array[lation_start:lation_end]=rate_constant_array[lation_start:lation_end]*const_translation
+  #@show rate_constant_array[140:162]
+ # Just try to adjust dosage level by similiar amount as protein (?)
+  rate_constant_array[addition_start:addition_end]=10*rate_constant_array[addition_start:addition_end]#*const_translation
+
+# factor of 10 just corrects for a 0.1 "gamma/delta" value in the data file
+  rate_constant_array[mdeg_start:mdeg_end]=10*rate_constant_array[mdeg_start:mdeg_end]*degradation_constant_mRNA
+  rate_constant_array[pdeg_start:pdeg_end]=10*rate_constant_array[pdeg_start:pdeg_end]*degradation_constant_protein
+  local_data_dictionary["RATE_CONSTANT_ARRAY"] = rate_constant_array
   # Run the simulation -
   (TSIM,X) = SolveBalances(TSTART,TSTOP,Ts,local_data_dictionary);
 

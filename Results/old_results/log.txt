@@ -1,0 +1,8 @@
+fig2_hand_fitno_label_1:
+gain and order parameters bounded by special conditions:
+   gain_lower,gain_upper = 0.001, 10.0
+   order_lower,order_upper = 0.5,2.5
+
+all others set by 0.2x deviation
+
+

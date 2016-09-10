@@ -23,36 +23,43 @@ end
 #### set values for multiple variables
 
 # # # TGFB SIGNALING RATES
-tgfb12_to_ap1_sp1_gain = 1.5
-tgfb3_to_smad_gain_rate = 2.0 # TGFB3_R_phosphorylation_Smad: Smad =(TGFB3_R)=> pSmad
+tgfb12_to_ap1_sp1_gain = 1.0 #1.5
+tgfb3_to_smad_gain_rate = 2.0 *1.0 # TGFB3_R_phosphorylation_Smad: Smad =(TGFB3_R)=> pSmad # 2.0
 tgfb12_to_smad_rate = 0.25
 MAPK_activation_smad_rate = 0.2
 # # # BETA-CATEININ RATES
-bcat_deg_rate = 0.01 # default 0.1
+bcat_deg_rate = 0.3 # default 0.1
 # bcat_deg_gsk3_rate = 0.05 # default 0.1
 
-bcat_trans_rate = 1.0
+bcat_trans_rate = 0.5-0.1
 # # # BETA-CATEININ COMPLEXING
-ecad_complex_gain = 15.0 # 6 or 8
-ecad_complex_reverse = 1.0
-ecad_bcat_degradation_rate = 0.2
+ecad_complex_gain = 12.0 *2 # 6 or 8
+ecad_complex_reverse = 1.0 *2
+ecad_bcat_degradation_rate = 0.3 + 0.3
 lef1_complex_gain = 4.0
-tcf4_complex_gain = 4.0
-apc_complex_forward_rate=10.0
+tcf4_complex_gain = 4.0 + 4
+apc_complex_forward_rate=11.0 # 11.0
 apc_bcat_deg_rate = 0.1
-tgfb3_pik3_rate = 1.0 #5.0
-gsk3_p_rate = 1.0 # 3.0
+tgfb3_pik3_rate = 0.5  #5.0
+gsk3_p_rate = 0.5 # 3.0
 #ecad_bais_factor = 1.0 # multiply ecadherin-bcat only
-ecad_trans_rate = 2.5 # 1.5
-ecad_deg_rate=1.0 # 0.1
-pi3k_translation_rate = 0.5 #
-apc_complex_trans_rate = 1.0
+ecad_trans_rate = 1.0+0.7+0.5# 1.5
+ecad_deg_rate= 1.3 -0.9 -0.2 # 0.1
+
+ecad_transc_rate = 1.0+0.4 # 1.5
+ecad_mrna_deg_rate= 0.1 + 0.1 # 0.1
+
+pi3k_translation_rate = 0.5 # 0.5
+gsk3_translation_rate = 0.5 # 0.5
+
+apc_complex_trans_rate = 0.6
 lef1_trans_rate = 1.0 # 1.0
-tcf4_trans_rate = 0.5 # 0.5
+tcf4_trans_rate = 1.0 # 0.5
 
 snail_slug_trans_rate = 1.0 # increases lef1 mrna too much
 
-yreg_deg_rate = 0.1 # 1.5
+yreg_deg_rate = 1.5 # 1.5
+yreg_translation_rate = 1
 
 ### SELECTED DATA FILE INDEXES
 
@@ -63,6 +70,7 @@ tgfb12_initial_cond_index = 88 # TGFB12
 R_initial_cond_index = 87
 vegf_initial_cond_index = 93 # VEGF
 
+yreg_translation_rate_index = 152 # translation_mRNA_YREG1: mRNA_YREG1 = YREG1
 
 # TGFB signaling
 tgfb3_binding_rate_index = 3 # TGFB3_binding: TGFB3+R =([])=> TGFB3_R
@@ -100,11 +108,13 @@ tgfb3_pik3_rate_index = 14 # TGFB3_R_phosphorylation_PI3K: PI3K =(TGFB3_R)=> PI3
 apc_bcat_deg_rate_index = 77 # degradation_APC_AXIN_Bcatenin: APC_AXIN_Bcatenin =([])=> []
 gsk3_p_rate_index = 15 # PI3K_phosphorylation_GSK3: GSK3 =(PI3K_P)=> GSK3_P
 pi3k_translation_rate_index = 169 # translation_mRNA_PI3K: mRNA_PI3K = PI3K
+gsk3_translation_rate_index = 168	# translation_mRNA_GSK3: mRNA_GSK3 = GSK3
 apc_complex_trans_rate_index = 167 # translation_mRNA_APC_AXIN: mRNA_APC_AXIN = APC_AXIN
 
 #ecad bcat balance
 ecad_trans_rate_index = 148 # translation_mRNA_Ecadherin: mRNA_Ecadherin = Ecadherin
 ecad_deg_rate_index = 44 # Ecadherin_degrdation: Ecadherin =([])=> []
+ecad_mrna_deg_rate_index = 102 # degradation_mRNA_Ecadherin: mRNA_Ecadherin = []
 ecad_transc_rate_index = 125 # induction_gene_Ecadherin: gene_Ecadherin = mRNA_Ecadherin
 # TGFB dosing
 tgfb12_forward_rate_index = 91 # addition_TGFb12: [] =([])=> TGFB12
@@ -145,7 +155,7 @@ ecad_virus_reverse_rate_index = 89 # addition_ecad_virus: ecad_virus =([])=> []
 # DN smad
 # DN SMAD temoprary
 smad_induction_rate_index = 124 # induction_gene_Smad: gene_Smad = mRNA_Smad
-psmad_deg_rate_index = 66 # pSmad_degradation: pSmad =([])=> []
+# redundant psmad_deg_rate_index = 66 # pSmad_degradation: pSmad =([])=> []
 # reverse convention based on product term
 #smad_virus_forward_rate_index = 146 # addition_smad_virus: [] =([])=> smad_virus (reverse)
 #smad_virus_reverse_rate_index = 122 # addition_smad_virus: smad_virus =([])=> []
@@ -156,11 +166,13 @@ lef1_induction_rate_index = 130 # induction_gene_LEF1: gene_LEF1 = mRNA_LEF1
 #LEF1_virus_forward_rate_index = 18 # addition_lef1_virus: [] =([])=> lef1_virus (reverse)
 #LEF1_virus_reverse_rate_index = 111 # addition_lef1_virus: lef1_virus =([])=> []
 
+lef1_deg_rate_index = 50 # LEF1_degradation: LEF1 =([])=> []
+Active_LEF1_deg_rate_index = 51 # Active_LEF1_degradation: Active_LEF1 =([])=> []
+
 #yreg_deg_rate_index = 122 # degradation_mRNA_YREG1: mRNA_YREG1 = []
-yreg_deg_rate_index = 150 # mRNA_YREG1_degradation: mRNA_YREG1 =([])=> []
+yreg_deg_rate_index = 106 # degradation_mRNA_YREG1: mRNA_YREG1 = []
 
-
-tcf4_trans_rate_index = 18 # translation_mRNA_TCF4: mRNA_TCF4 = TCF4
+tcf4_trans_rate_index = 150 # translation_mRNA_TCF4: mRNA_TCF4 = TCF4
 
 # MAPK inhibitor
 # ?
@@ -239,7 +251,7 @@ push!(rate_constant_update_array,[tgfb3_to_smad_gain_rate_index,tgfb3_to_smad_ga
 push!(rate_constant_update_array,[tgfb12_to_smad_rate_index,tgfb12_to_smad_rate]) # TGFB3_binding: TGFB3+R =([])=> TGFB3_R
 
 push!(rate_constant_update_array,[R_deg_rate_index,0.01]) # R_degradation: R =([])=> []
-push!(rate_constant_update_array,[TGFB12_R_activation_RAS_rate_index,2.0]) #TGFB12_R_activation_RAS: RAS =(TGFB12_R)=> RAS_GTP
+push!(rate_constant_update_array,[TGFB12_R_activation_RAS_rate_index,1.0]) #TGFB12_R_activation_RAS: RAS =(TGFB12_R)=> RAS_GTP
 push!(rate_constant_update_array,[RAS_activation_RAF_rate_index,tgfb12_to_ap1_sp1_gain]) # RAS_GTP_phosphorylation_RAF: RAF =(RAS_GTP)=> RAF_P
 push!(rate_constant_update_array,[RAF_activation_MAPK_rate_index,tgfb12_to_ap1_sp1_gain]) # RAF_P_phosphorylation_MAPK: MAPK =(RAF_P)=> pMAPK
 push!(rate_constant_update_array,[MAPK_activation_AP1_SP1_rate_index,tgfb12_to_ap1_sp1_gain]) # MAPK_phosphorylation_AP1_SP1: AP1_SP1 =(pMAPK)=> AP1_SP1_P
@@ -273,9 +285,19 @@ push!(rate_constant_update_array,[tgfb3_pik3_rate_index,tgfb3_pik3_rate])
 push!(rate_constant_update_array,[gsk3_p_rate_index,gsk3_p_rate])
 push!(rate_constant_update_array,[apc_bcat_deg_rate_index,apc_bcat_deg_rate])
 push!(rate_constant_update_array,[pi3k_translation_rate_index,pi3k_translation_rate])
+push!(rate_constant_update_array,[gsk3_translation_rate_index,gsk3_translation_rate])
+
 push!(rate_constant_update_array,[apc_complex_trans_rate_index,apc_complex_trans_rate])
 
 push!(rate_constant_update_array,[tcf4_trans_rate_index ,tcf4_trans_rate])
+
+
+
+push!(rate_constant_update_array,[yreg_translation_rate_index ,yreg_translation_rate])
+
+
+push!(rate_constant_update_array,[ecad_transc_rate_index,ecad_transc_rate]) # addition_TGFb12: [] =([])=> TGFB12
+push!(rate_constant_update_array,[ecad_mrna_deg_rate_index,ecad_mrna_deg_rate]) # addition_TGFb12: [] =([])=> TGFB12
 
 
 # control parameter array

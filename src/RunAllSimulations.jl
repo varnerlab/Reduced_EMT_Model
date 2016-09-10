@@ -4,8 +4,8 @@ include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/new_SimulationF
 
 # Establish simulation parameters
 TSTART = 0.0;
-Ts = 0.1;
-TSTOP = 100.0;
+Ts = 1.0; # 0.1
+TSTOP = 250.0; # 100 ; 500
 
 # Load data dictionary
 data_dictionary = DataFile(TSTART,TSTOP,Ts)
@@ -25,41 +25,52 @@ control_parameter_array[1,1]=30.0 # GAIN # _tgfb3_Ab
 # NFATc_inhibition: vivit inhibition; Calcineurin_activation_NFATc
 control_parameter_array[2,1]=3.0 # GAIN # NFATc_inhibition: vivit inhibition; Calcineurin_activation_NFATc
 # GSK3_P_inhibition_Binding_APC_AXIN_forw: GSK3_P inhibition; Binding_APC_AXIN_forw
-control_parameter_array[3,1]=3.0 # GAIN # GSK3_P_inhibition_Binding_APC_AXIN_forw
+control_parameter_array[3,1]=0.5 # GAIN # GSK3_P_inhibition_Binding_APC_AXIN_forw
 control_parameter_array[3,2]=1.0 # ORDER# GSK3_P_inhibition_Binding_APC_AXIN_forw
+
 # Active_TCF4_inhibition_Ecad: Ecadherin_Bcatenin inhibition; TCF4_Bcatenin_complex_formation
-control_parameter_array[4,1]=0.5 # GAIN # Active_TCF4_inhibition_Ecad
+control_parameter_array[4,1]=0.1 # GAIN # Active_TCF4_inhibition_Ecad
+control_parameter_array[4,1]=0.9 # GAIN # Active_TCF4_inhibition_Ecad
 # Active_TCF4_inhibition_APC: APC_AXIN_Bcatenin inhibition; TCF4_Bcatenin_complex_formation
-control_parameter_array[5,1]=0.5 # GAIN # Active_TCF4_inhibition_APC
+control_parameter_array[5,1]=0.2 # GAIN # Active_TCF4_inhibition_APC
+control_parameter_array[5,2]=1.0 # ORDER # Active_TCF4_inhibition_APC
+
 # activation_Ecadherin_by_Active_NFATc: Active_NFATc induction induction_gene_Ecadherin
 control_parameter_array[6,1]=0.3 # GAIN # activation_Ecadherin_by_Active_NFATc
 # repression_Ecadherin_by_pSmad: pSmad repression induction_gene_Ecadherin
-control_parameter_array[7,1]=1.0 # GAIN # REP_ECAD_PSMAD
+control_parameter_array[7,1]=5.0 # GAIN # REP_ECAD_PSMAD
+control_parameter_array[7,2]=2.0 # ORDER # REP_ECAD_PSMAD
 # repression_Ecadherin_by_SNAIL_SLUG: SNAIL_SLUG repression induction_gene_Ecadherin
 control_parameter_array[8,1]=0.5 # GAIN_SNAIL_SLUG_ECAD #2.0
 # repression_Ecadherin_by_Active_LEF1: Active_LEF1 repression induction_gene_Ecadherin
-control_parameter_array[9,1]=0.5# GAIN_ACTIVE_LEF1_ECAD #2.0
+control_parameter_array[9,1]=0.6# GAIN_ACTIVE_LEF1_ECAD #2.0 0.5
+control_parameter_array[9,2]=1.0# ORDER_ACTIVE_LEF1_ECAD
 #  control_parameter_array[6,1]=0.3 # GAIN_BCAT_TGFB3
 # activation_Ecadherin_by_ecad_virus: ecad_virus induction induction_gene_Ecadherin
-control_parameter_array[10,1]=0.5 # ecad_virus ***
+control_parameter_array[10,1]=5.0 # ecad_virus ***
 # activation_TGFB3_by_TCF4: Active_TCF4 induction induction_gene_TGFB3
-control_parameter_array[11,1]=0.5 # GAIN_TCF4_TGFB3
+control_parameter_array[11,1]=0.15 # GAIN_TCF4_TGFB3
+control_parameter_array[11,2]=1.5 # GAIN_TCF4_TGFB3
+
 # repression_TGFB3_by_YREG1: YREG1 repression induction_gene_TGFB3
-control_parameter_array[12,1]=8.0 # YREG_TGFB3
+control_parameter_array[12,1]=1.0 # YREG_TGFB3 #1.0
+control_parameter_array[12,2]=1.0 # YREG_TGFB3
 # repression_YREG1_by_SNAIL_SLUG: SNAIL_SLUG repression induction_gene_YREG1
-control_parameter_array[13,1]=6.0 # SNAIL_YREG1
+control_parameter_array[13,1]=0.1 # GAIN_SNAIL_YREG1 # 0.1
+control_parameter_array[13,2]=2.0 # ORDER_SNAIL_YREG1 # 2.0
 # activation_LEF1_by_pSmad: pSmad induction induction_gene_LEF1
-control_parameter_array[14,1]=0.8# GAIN # _PSMAD_LEF1 # 0.5
-control_parameter_array[14,2]=1.0# ORDER# _PSMAD_LEF1
+control_parameter_array[14,1]=0.8# GAIN # _PSMAD_LEF1 # 0.5 # 0.8
+control_parameter_array[14,2]=2.0# ORDER# _PSMAD_LEF1       # 1.0, 2.0
 # repression_LEF1_by_YREG1: YREG1 repression induction_gene_LEF1
-control_parameter_array[15,1]=5.0 # YREG1_LEF1
+control_parameter_array[15,1]=5.0 # GAIN YREG1_LEF1 # 0.1
+control_parameter_array[15,2]=0.5 # ORDER YREG1_LEF1 # 2.0
 # activation_vimentin_by_Active_LEF1: Active_LEF1 induction induction_gene_vimentin
-control_parameter_array[16,1]=0.5# GAIN_LEF1_VIM
+control_parameter_array[16,1]=0.3# GAIN_LEF1_VIM
 control_parameter_array[16,2]=2.0# ORDER_LEF1_VIM
 # activation_SNAIL_SLUG_by_AP1_SP1_P: AP1_SP1_P induction induction_gene_SNAIL_SLUG
 control_parameter_array[18,1]=1.0# SS by AP1 SP1
 # activation_SNAIL_SLUG_by_ss_virus: ss_virus induction induction_gene_SNAIL_SLUG
-control_parameter_array[19,1]=0.1# SS_VIRUS ***
+control_parameter_array[19,1]=5.0# SS_VIRUS ***
 
 
 # # # #

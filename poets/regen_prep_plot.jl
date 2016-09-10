@@ -7,8 +7,8 @@ include(fpath)
 
 # Establish simulation parameters
 TSTART = 0.0;
-Ts = 0.1;
-TSTOP = 100.0;
+Ts = 1.0; # 0.1
+TSTOP = 250.0; # 100 ; 500
 
 # Initialize intial data dictionary
 data_dictionary = DataFile(TSTART,TSTOP,Ts)
@@ -105,17 +105,19 @@ index_lef_act = 59
 index_ss = 62
 # ecadherin protein (unbound)
 index_ecad = 51
+# ecad_bcat index
+index_ecad_bcat = 53
 # vimentin protein
 index_vim = 63
 # tgfb3 protein
-index_tgfb3 = 91
+index_tgfb3 = 92
 # This is fit to ACTIVE_TCF4, data is IP from bcat and tcf-4
 index_bcat_tcf = 57 # i.e. this index is for Active_TCF4
 # Should probably be total protein, so sum index_bcat with index_tcf
 index_tcf = 56
 
 index_psmad = 40
-index_lef_mrna = 83
+index_lef_mrna = 84
 index_ecad_mrna = 16
 
 ## Designate arrays for each figure
@@ -134,9 +136,9 @@ F2K = Array{Float64,1}([])
 F2L = Array{Float64,1}([])
 
 t0  = 1
-t24 = 264
-t48 = 528
-t72 = 792
+t24 = 74
+t48 = 149
+t72 = 224
 # loop over results and build each figure
 
 function norm_dat(data)
@@ -170,9 +172,9 @@ push!(F2A,bar2)
 push!(F2A,bar3)
 
 # PANEL B
-bar1 = state[1][t48,index_lef]
-bar2 = state[2][t48,index_lef]
-bar3 = state[3][t48,index_lef]
+bar1 = state[1][t48,index_lef] + state[1][t48,index_lef_act]
+bar2 = state[2][t48,index_lef] + state[2][t48,index_lef_act]
+bar3 = state[3][t48,index_lef] + state[3][t48,index_lef_act]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2B,bar1)
 push!(F2B,bar2)
@@ -194,25 +196,25 @@ push!(F2D,bar1)
 push!(F2D,bar2)
 push!(F2D,bar3)
 # PANEL E
-bar1 = state[1][t48,index_lef]
-bar2 = state[4][t48,index_lef]
-bar3 = state[6][t48,index_lef]
+bar1 = state[1][t48,index_lef] + state[1][t48,index_lef_act]
+bar2 = state[4][t48,index_lef] + state[4][t48,index_lef_act]
+bar3 = state[6][t48,index_lef] + state[6][t48,index_lef_act]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2E,bar1)
 push!(F2E,bar2)
 push!(F2E,bar3)
-# PANEL F
-bar1 = state[1][t48,index_ecad]
-bar2 = state[4][t48,index_ecad]
-bar3 = state[7][t48,index_ecad]
+# PANEL F # index_ecad_bcat
+bar1 = state[1][t48,index_ecad] + state[1][t48,index_ecad_bcat]
+bar2 = state[4][t48,index_ecad] + state[4][t48,index_ecad_bcat]
+bar3 = state[7][t48,index_ecad] + state[7][t48,index_ecad_bcat]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2F,bar1)
 push!(F2F,bar2)
 push!(F2F,bar3)
 # PANEL G
-bar1 = state[1][t48,index_lef] # +index_lef_act
-bar2 = state[8][t48,index_lef]
-bar3 = state[9][t48,index_lef]
+bar1 = state[1][t48,index_lef] + state[1][t48,index_lef_act]
+bar2 = state[8][t48,index_lef] + state[8][t48,index_lef_act]
+bar3 = state[9][t48,index_lef] + state[9][t48,index_lef_act]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2G,bar1)
 push!(F2G,bar2)
@@ -228,10 +230,10 @@ push!(F2H,bar2)
 push!(F2H,bar3)
 push!(F2H,bar4)
 # PANEL I
-bar1 = state[1][t48,index_ecad]
-bar2 = state[8][t48,index_ecad]
-bar3 = state[9][t48,index_ecad]
-bar4 = state[10][t48,index_ecad]
+bar1 = state[1][t48,index_ecad] + state[1][t48,index_ecad_bcat]
+bar2 = state[8][t48,index_ecad] + state[8][t48,index_ecad_bcat]
+bar3 = state[9][t48,index_ecad] + state[9][t48,index_ecad_bcat]
+bar4 = state[10][t48,index_ecad]+ state[10][t48,index_ecad_bcat]
 bar1,bar2,bar3,bar4=norm_dat([bar1,bar2,bar3,bar4])
 push!(F2I,bar1)
 push!(F2I,bar2)

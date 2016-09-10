@@ -4,6 +4,14 @@
 # Load POETS
 using POETs
 
+# process flags for cross validation
+outdir = ARGS[1]
+global HOLD=0
+if length(matchall(r"fold_pop_obj",outdir)) == 1
+global HOLD = parse(Int,split(outdir,"_")[6])
+@show "Hold out", HOLD
+end
+
 # INITIALIZE MODEL
 # FORMAT DATA AND INIT PARAMETER ARRAY
 # INITIALIZE OBJECTIVE FUNCTION
@@ -24,6 +32,8 @@ println(now())
 println(now())
 # Save output
 
-writedlm("EC.dat", EC)
-writedlm("PC.dat", PC)
-writedlm("RA.dat", RA)
+
+
+writedlm("$outdir/EC.dat", EC)
+writedlm("$outdir/PC.dat", PC)
+writedlm("$outdir/RA.dat", RA)

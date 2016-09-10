@@ -107,7 +107,7 @@ push!(initial_condition_array,1.0);	#	56	TCF4
 push!(initial_condition_array,0.0);	#	57	Active_TCF4
 push!(initial_condition_array,0.0);	#	58	LEF1
 push!(initial_condition_array,0.0);	#	59	Active_LEF1
-push!(initial_condition_array,100.0);	#	60	PPase
+push!(initial_condition_array,100.0+10.0);	#	60	PPase
 push!(initial_condition_array,1.0);	#	61	YREG1
 push!(initial_condition_array,0.0);	#	62	SNAIL_SLUG
 push!(initial_condition_array,0.0);	#	63	vimentin
@@ -276,7 +276,7 @@ push!(rate_constant_array,1.0);	# 25	TCF4_Bcatenin_complex_formation: TCF4+Bcate
 push!(rate_constant_array,1.0);	# 26	TCF4_Bcatenin_complex_formation: Active_TCF4 =([])=> TCF4+Bcatenin (reverse)
 push!(rate_constant_array,1.0);	# 27	LEF1_Bcatenin_complex_formation: LEF1+Bcatenin =([])=> Active_LEF1
 push!(rate_constant_array,1.0);	# 28	LEF1_Bcatenin_complex_formation: Active_LEF1 =([])=> LEF1+Bcatenin (reverse)
-push!(rate_constant_array,1.0);	# 29	deactivation_pSmad: pSmad =(PPase)=> Smad
+push!(rate_constant_array,0.9);	# 29	deactivation_pSmad: pSmad =(PPase)=> Smad
 push!(rate_constant_array,1.0);	# 30	deactivation_RAF_P: RAF_P =(PPase)=> RAF
 push!(rate_constant_array,1.0);	# 31	deactivation_RAS_GTP: RAS_GTP =([])=> RAS
 push!(rate_constant_array,1.0);	# 32	deactivation_pMAPK: pMAPK =(PPase)=> MAPK
@@ -443,8 +443,8 @@ saturation_constant_array[17,37] = 1.0;	# RAS_GTP_phosphorylation_RAF: RAF =(RAS
 saturation_constant_array[18,47] = 1.0;	# RAF_P_phosphorylation_MAPK: MAPK =(RAF_P)=> pMAPK	 species: MAPK
 saturation_constant_array[19,39] = 1.0;	# MAPK_phosphorylation_Smad: Smad =(pMAPK)=> pSmad	 species: Smad
 saturation_constant_array[20,49] = 1.0;	# MAPK_phosphorylation_AP1_SP1: AP1_SP1 =(pMAPK)=> AP1_SP1_P	 species: AP1_SP1
-saturation_constant_array[21,51] = 1.0;	# Binding_Ecadherin_Bcatenin: Ecadherin+Bcatenin =([])=> Ecadherin_Bcatenin	 species: Ecadherin
-saturation_constant_array[21,52] = 1.0;	# Binding_Ecadherin_Bcatenin: Ecadherin+Bcatenin =([])=> Ecadherin_Bcatenin	 species: Bcatenin
+saturation_constant_array[21,51] = 2.0;	# Binding_Ecadherin_Bcatenin: Ecadherin+Bcatenin =([])=> Ecadherin_Bcatenin	 species: Ecadherin
+saturation_constant_array[21,52] = 0.5;	# Binding_Ecadherin_Bcatenin: Ecadherin+Bcatenin =([])=> Ecadherin_Bcatenin	 species: Bcatenin
 saturation_constant_array[22,53] = 1.0;	# Binding_Ecadherin_Bcatenin: Ecadherin_Bcatenin =([])=> Ecadherin+Bcatenin (reverse)	 species: Ecadherin_Bcatenin
 saturation_constant_array[23,54] = 1.0;	# Binding_APC_AXIN_forw: APC_AXIN+Bcatenin =([])=> APC_AXIN_Bcatenin	 species: APC_AXIN
 saturation_constant_array[23,52] = 1.0;	# Binding_APC_AXIN_forw: APC_AXIN+Bcatenin =([])=> APC_AXIN_Bcatenin	 species: Bcatenin
@@ -590,11 +590,11 @@ VOLUME = ((1-fraction_nucleus)*(1/6)*(3.14159)*(hl60_diameter)^3)*(1e-15)
 kcat_transcription = max_transcription_rate*(3600/average_transcript_length)  # hr^-1
 kcat_translation = max_translation_rate*(3600/average_protein_length)  # hr^-1
 
-saturation_transcription = 4600*(1/av_number)*(1/VOLUME)*1e9
-saturation_translation = 100000*(1/av_number)*(1/VOLUME)*1e9
+saturation_transcription = (46000*10.0)*(1/av_number)*(1/VOLUME)*1e9
+saturation_translation = (100000*1.0)*(1/av_number)*(1/VOLUME)*1e9
 
-mRNA_half_life_TF = 2             # hrs
-protein_half_life = 10            # hrs
+mRNA_half_life_TF = 9             # hrs
+protein_half_life = 46            # hrs
 
 const global degradation_constant_mRNA = -(1/mRNA_half_life_TF)*log(0.5)
 const global degradation_constant_protein = -(1/protein_half_life)*log(0.5)

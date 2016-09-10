@@ -5,9 +5,9 @@
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights 
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-# copies of the Software, and to permit persons to whom the Software is 
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
 # The above copyright notice and this permission notice shall be included in
@@ -28,17 +28,17 @@ function Kinetics(t,x,data_dictionary)
 # Type: GRN-JULIA
 # Version: 1.0
 # Generation timestamp: 08-08-2016 20:01:41
-# 
-# Input arguments: 
-# t  - current time 
-# x  - state vector 
-# data_dictionary - parameter vector 
-# 
-# Return arguments: 
-# rate_vector - rate vector 
+#
+# Input arguments:
+# t  - current time
+# x  - state vector
+# data_dictionary - parameter vector
+#
+# Return arguments:
+# rate_vector - rate vector
 # --------------------------------------------------------------------- #
-# 
-# Alias the species vector - 
+#
+# Alias the species vector -
 gene_Smad = x[1];
 gene_Ecadherin = x[2];
 gene_Bcatenin = x[3];
@@ -137,7 +137,7 @@ TGFB3_R = x[95];
 VEGFR = x[96];
 VEGF_VEGFR = x[97];
 
-# Formulate the kinetic rate vector - 
+# Formulate the kinetic rate vector -
 rate_constant_array = data_dictionary["RATE_CONSTANT_ARRAY"];
 saturation_constant_array = data_dictionary["SATURATION_CONSTANT_ARRAY"];
 rate_vector = Float64[];

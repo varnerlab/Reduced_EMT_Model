@@ -26,11 +26,11 @@ Fig1F = [
 
 # Figure 2A # Ojb3
 Fig2A = [
-11,225,221, #TGF-b3
+11,225,221,30, #TGF-b3
 209,216,212 #a-tubulin
 ]
-#Snail,-,+,-,,
-#Slug,-,-,+,,
+#Snail,-,+,-,fig3F(+ECAD),
+#Slug,-,-,+,fig3F(+ECAD),
 
 #Figure 2E # Ojb4
 Fig2E = [
@@ -103,13 +103,21 @@ Fig5A = [
 #TGF-b2,-,'+,-,'+,'+
 #U0126,-,-,'+,-,'+
 
-#Figure 5C # # Ojb11
+#Figure 5C # # Ojb11 # NOT FIGURE 5 C
 Fig5C = [
 1,217,20,200, #LEF-1
 196,199,210,214 #a-tubulin
 ]
+
 #TGF-b1,-,'+,'+,-,
 #TGF-b2,-,'+,-,'+,
-#TGFB3_AB,-,-,'+,-,
+#MEKINH,-,-,'+,-,
 # WARNING according to paper, 3rd condition is actually TGFB3_AB
 # different from RAG excel sheet
+# THE OBJECTIVE IS FORMULATED CORRECTLY BUT IT DOES NOT RELATE TO FIGURE 5C WHICH IS NOT TRAIED TO
+
+Fig4F = [
+56,224,31 #GSK3_P
+]
+#TGF-b3,-,+,-
+#PI3Kin,-,-,+

@@ -39,9 +39,14 @@ push!(rate_constant_update_array,[ss_virus_reverse_rate_index,0.1])
 #push!(rate_constant_update_array,[TGFB3_foward_rate_index,4.0])
 #push!(rate_constant_update_array,[TGFB3_reverse_rate_index,0.1])
 
-# DN LEF1 temoprary
-lef1_induction_rate = 0.01
+## DN LEF1 temoprary
+lef1_induction_rate = 0.006
+lef1_deg_rate = 30.0
+Active_LEF1_deg_rate = 30.0
 push!(rate_constant_update_array,[lef1_induction_rate_index,lef1_induction_rate])
+push!(rate_constant_update_array,[lef1_deg_rate_index,lef1_deg_rate])
+push!(rate_constant_update_array,[Active_LEF1_deg_rate_index,Active_LEF1_deg_rate])
+
 
 # DN SMAD temoprary
 #SMAD_induciton_rate_index = 134

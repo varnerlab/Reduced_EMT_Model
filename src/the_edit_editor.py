@@ -43,6 +43,10 @@ for x in search:
             new_index = int ( tmp[2:tab] )
             print(line,new_index)
             indeces.append(new_index)
+#        elif 'saturation' not in line:
+#            # catch strings that aren't ound
+#            print('String not found',x[1])
+#            raise 
 
 print cnt
 

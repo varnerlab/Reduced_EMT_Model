@@ -38,6 +38,7 @@ function Control(t,x,rate_vector,data_dictionary)
 
 # Set a default value for the allosteric control variables -
 EPSILON = 1.0e-3;
+#EPSILON = 1.0e-1;
 number_of_reactions = length(rate_vector);
 control_vector = ones(number_of_reactions);
 control_parameter_array = data_dictionary["CONTROL_PARAMETER_ARRAY"];
@@ -200,7 +201,8 @@ else
 	push!(transfer_function_vector,1.0 - (control_parameter_array[5,1]*(APC_AXIN_Bcatenin)^control_parameter_array[5,2])/(1+control_parameter_array[5,1]*(APC_AXIN_Bcatenin)^control_parameter_array[5,2]));
 end
 
-control_vector[25] = maximum(transfer_function_vector);
+control_vector[25] = mean(transfer_function_vector); # was maximum
+#@show transfer_function_vector
 transfer_function_vector = 0;
 # ----------------------------------------------------------------------------------- #
 
@@ -211,29 +213,58 @@ transfer_function_vector_a = Float64[];
 # activation_Ecadherin_by_Active_NFATc target: induction_gene_Ecadherin actor: Active_NFATc type: induction
 push!(transfer_function_vector_a,(control_parameter_array[6,1]*(Active_NFATc)^control_parameter_array[6,2])/(1+control_parameter_array[6,1]*(Active_NFATc)^control_parameter_array[6,2]));
 # repression_Ecadherin_by_pSmad target: induction_gene_Ecadherin actor: pSmad type: repression
-if (pSmad<EPSILON);
-	push!(transfer_function_vector,1.0);
-else
-	push!(transfer_function_vector,1.0 - (control_parameter_array[7,1]*(pSmad)^control_parameter_array[7,2])/(1+control_parameter_array[7,1]*(pSmad)^control_parameter_array[7,2]));
-end
+# if (pSmad<EPSILON);
+# 	push!(transfer_function_vector,1.0);
+# else
+# 	push!(transfer_function_vector,1.0 - (control_parameter_array[7,1]*(pSmad)^control_parameter_array[7,2])/(1+control_parameter_array[7,1]*(pSmad)^control_parameter_array[7,2]));
+# end
 
 # repression_Ecadherin_by_SNAIL_SLUG target: induction_gene_Ecadherin actor: SNAIL_SLUG type: repression
 if (SNAIL_SLUG<EPSILON);
 	push!(transfer_function_vector,1.0);
 else
-	push!(transfer_function_vector,1.0 - (control_parameter_array[8,1]*(SNAIL_SLUG)^control_parameter_array[8,2])/(1+control_parameter_array[8,1]*(SNAIL_SLUG)^control_parameter_array[8,2]));
+	push!(transfer_function_vector,1.0 - (control_parameter_array[8,1]*(Active_LEF1*SNAIL_SLUG)^control_parameter_array[8,2])/(1+control_parameter_array[8,1]*(Active_LEF1*SNAIL_SLUG)^control_parameter_array[8,2]));
 end
 
 # repression_Ecadherin_by_Active_LEF1 target: induction_gene_Ecadherin actor: Active_LEF1 type: repression
-if (Active_LEF1<EPSILON);
+if (pSmad<EPSILON);
 	push!(transfer_function_vector,1.0);
 else
-	push!(transfer_function_vector,1.0 - (control_parameter_array[9,1]*(Active_LEF1)^control_parameter_array[9,2])/(1+control_parameter_array[9,1]*(Active_LEF1)^control_parameter_array[9,2]));
+	push!(transfer_function_vector,1.0 - (control_parameter_array[9,1]*(Active_LEF1*pSmad)^control_parameter_array[9,2])/(1+control_parameter_array[9,1]*(Active_LEF1*pSmad)^control_parameter_array[9,2]));
 end
 
 # activation_Ecadherin_by_ecad_virus target: induction_gene_Ecadherin actor: ecad_virus type: induction
 push!(transfer_function_vector_a,(control_parameter_array[10,1]*(ecad_virus)^control_parameter_array[10,2])/(1+control_parameter_array[10,1]*(ecad_virus)^control_parameter_array[10,2]));
-control_vector[125] = maximum([minimum(transfer_function_vector),maximum(transfer_function_vector_a)]);
+#control_vector[125] = maximum([minimum(transfer_function_vector),maximum(transfer_function_vector_a)]);
+#control_vector[125] = mean([minimum(transfer_function_vector),maximum(transfer_function_vector_a)]); # more stable?
+# function product(A)
+# prod = 1
+# for x in A
+# prod = prod*x
+# end
+# return prod;
+# end
+#control_vector[125] = mean([product(transfer_function_vector),maximum(transfer_function_vector_a)]); # more stable?
+#control_vector[125] = mean([minimum(transfer_function_vector[1:2]),maximum(transfer_function_vector_a),transfer_function_vector[3]]); # more stable?
+#push!(transfer_function_vector,0.5)
+
+
+#control_vector[125] = maximum([minimum(transfer_function_vector),maximum(transfer_function_vector_a),transfer_function_vector[3]]);
+#control_vector[125] = maximum([mean([minimum(transfer_function_vector),transfer_function_vector[3]]),maximum(transfer_function_vector_a)]);
+
+#control_vector[125] = mean([minimum(transfer_function_vector),maximum(transfer_function_vector_a),transfer_function_vector[3]]);
+control_vector[125] = mean([minimum(transfer_function_vector),maximum(transfer_function_vector_a)]);
+
+
+
+
+#control_vector[125] = mean([maximum([minimum(transfer_function_vector),transfer_function_vector[3]]),maximum(transfer_function_vector_a)]);
+
+
+#control_vector[125] = maximum([minimum(transfer_function_vector),maximum(transfer_function_vector_a)]);
+
+#control_vector[125] = mean([minimum(transfer_function_vector),maximum(transfer_function_vector_a),transfer_function_vector[3]]);
+
 transfer_function_vector = 0;
 # ----------------------------------------------------------------------------------- #
 
@@ -279,7 +310,18 @@ else
 	push!(transfer_function_vector,1.0 - (control_parameter_array[15,1]*(YREG1)^control_parameter_array[15,2])/(1+control_parameter_array[15,1]*(YREG1)^control_parameter_array[15,2]));
 end
 
-control_vector[130] = minimum([mean(transfer_function_vector),transfer_function_vector[1]]);
+#control_vector[130] = minimum([mean(transfer_function_vector),transfer_function_vector[2]]); #[2]
+#control_vector[130] = minimum([mean(transfer_function_vector),transfer_function_vector[2]*transfer_function_vector[1]]); #[2]
+#control_vector[130] = mean([transfer_function_vector[2]*transfer_function_vector[1],transfer_function_vector[1]])
+control_vector[130] = mean(transfer_function_vector)
+#control_vector[130]=transfer_function_vector[2]*transfer_function_vector[1]
+
+#control_vector[130] = maximum([transfer_function_vector[2],transfer_function_vector[1]])
+
+#control_vector[130] = minimum([transfer_function_vector[2]*transfer_function_vector[1],transfer_function_vector[1]]); #[2]
+
+#control_vector[130] = mean(transfer_function_vector);
+#@show mean(transfer_function_vector),transfer_function_vector[2]
 transfer_function_vector = 0;
 # ----------------------------------------------------------------------------------- #
 
@@ -287,7 +329,7 @@ transfer_function_vector = 0;
 transfer_function_vector = Float64[];
 
 # activation_vimentin_by_Active_LEF1 target: induction_gene_vimentin actor: Active_LEF1 type: induction
-push!(transfer_function_vector,(control_parameter_array[16,1]*(Active_LEF1)^control_parameter_array[16,2])/(1+control_parameter_array[16,1]*(Active_LEF1)^control_parameter_array[16,2]));
+push!(transfer_function_vector,(control_parameter_array[16,1]*(Active_LEF1*pSmad)^control_parameter_array[16,2])/(1+control_parameter_array[16,1]*(Active_LEF1*pSmad)^control_parameter_array[16,2]));
 # activation_vimentin_by_AP1_SP1_P target: induction_gene_vimentin actor: AP1_SP1_P type: induction
 push!(transfer_function_vector,(control_parameter_array[17,1]*(AP1_SP1_P)^control_parameter_array[17,2])/(1+control_parameter_array[17,1]*(AP1_SP1_P)^control_parameter_array[17,2]));
 control_vector[132] = mean(transfer_function_vector);

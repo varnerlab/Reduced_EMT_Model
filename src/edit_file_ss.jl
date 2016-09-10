@@ -19,8 +19,14 @@ control_parameter_update_array = [];
 
 # Run snail slug instead
 #push!(rate_constant_update_array,[152,10.0]) # induction_gene_SNAIL_SLUG: gene_SNAIL_SLUG = mRNA_SNAIL_SLUG
+#push!(initial_cond_update_array,[ss_virus_initial_condition_index,])
 push!(rate_constant_update_array,[ss_virus_forward_rate_index,4.0])
 push!(rate_constant_update_array,[ss_virus_reverse_rate_index,0.1])
+
+#Test
+# tublin induction
+push!(rate_constant_update_array,[142,0.0])
+
 
 # give MAPK inhibitor
 
