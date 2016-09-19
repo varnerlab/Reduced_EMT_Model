@@ -142,7 +142,7 @@ tgfb3_to_smad_gain_rate_index = 13 # TGFB3_R_phosphorylation_Smad: Smad =(TGFB3_
 
 # vivit
 
-vivit_foward_rate_index  = 100 # addition_vivit: [] =([])=> vivit (reverse)
+vivit_forward_rate_index  = 100 # addition_vivit: [] =([])=> vivit (reverse)
 vivit_reverse_rate_index = 99 # addition_vivit: vivit =([])=> []
 
 # Snail slug transfeciton
@@ -221,7 +221,7 @@ push!(rate_constant_update_array,[U0126_foward_rate_index ,0.0])
 push!(rate_constant_update_array,[U0126_reverse_rate_index,0.0])
 
 # vivit dosing
-push!(rate_constant_update_array,[vivit_foward_rate_index,0.0])
+push!(rate_constant_update_array,[vivit_forward_rate_index,0.0])
 push!(rate_constant_update_array,[vivit_reverse_rate_index,0.0])
 
 ## Virus dosing

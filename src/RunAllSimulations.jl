@@ -121,10 +121,12 @@ xss_data_dict = deepcopy(data_dictionary)
 #
 #@show xss_data_dict["RATE_CONSTANT_ARRAY"][141]
 
-simulations_name = ["edit_file_none.jl","edit_file_tgfb.jl","edit_file_mapkin.jl","edit_file_ss.jl","edit_file_ssecad.jl","edit_file_ss_tgfb3ab.jl","edit_file_ss_dnlef1.jl","edit_file_tgfb3.jl","edit_file_dnsmad.jl","edit_file_tgfb3_dnlef1.jl","edit_file_tgfb_tgfb3ab.jl"]
-include("spin_up_edits.jl")
+#simulations_name = ["edit_file_none.jl","edit_file_tgfb.jl","edit_file_mapkin.jl","edit_file_ss.jl","edit_file_ssecad.jl","edit_file_ss_tgfb3ab.jl","edit_file_ss_dnlef1.jl","edit_file_tgfb3.jl","edit_file_dnsmad.jl","edit_file_tgfb3_dnlef1.jl","edit_file_tgfb_tgfb3ab.jl"]
+simulations_name = ["edit_file_vegf.jl","edit_file_vegf_vi.jl","edit_file_tgfb_vi.jl","edit_file_tgfb_vegf.jl","edit_file_vegf_vi.jl","edit_file_tgfb_vegf_vi.jl"] # Robustness sims
+#include("spin_up_edits.jl")
+include("robustness_spin_up_edits.jl")
 sim_data = [] # Keep data in RAM
-i_simdat = 1 # unused
+i_simdat = 1
 for sim in simulations
   name = simulations_name[i_simdat]
   msg = string("Running ",name," simulation ... ")

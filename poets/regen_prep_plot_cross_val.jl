@@ -5,7 +5,7 @@ using Debug
 fpath="/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/new_SimulationFunctions.jl" # Loads up DataFile , SolveBalances , Balances, Kinetics, Control
 include(fpath)
 
-readdir,sim_select = ARGS[1],ARGS[2]
+readdir,sim_select = ARGS[1],eval(parse(ARGS[2]))
 
 # Establish simulation parameters
 TSTART = 0.0;
@@ -44,7 +44,7 @@ sca_pack = zip(sca_indices,sca_values)
 
 # read parameter arrays resulting from POETs
 
-PC = readdlm(string(readdir,"/PC.dat") #readdir
+PC = readdlm(string(readdir,"/PC.dat")) #readdir
 
 # PC is an array of parameter arrays
 PC_results =[]
@@ -54,7 +54,12 @@ println("Model Population Size ", popsize)
 
 simulations = ["edit_file_none.jl","edit_file_tgfb.jl","edit_file_mapkin.jl","edit_file_ss.jl","edit_file_ssecad.jl","edit_file_ss_tgfb3ab.jl","edit_file_ss_dnlef1.jl","edit_file_tgfb3.jl","edit_file_dnsmad.jl","edit_file_tgfb3_dnlef1.jl","edit_file_tgfb_tgfb3ab.jl"]
 # sim_select
+@show sim_select
 simulations = [simulations[x] for x in sim_select]
+if sim_select == Any[]
+popsize =1
+end
+@show simulations
 
 for i in 1:popsize
   println("Regen ",i," of ",popsize)
@@ -217,16 +222,16 @@ if sim_select == pan_c
 
 # PANEL C
 bar1 = state[1][t48,index_tgfb3]
-bar2 = state[4][t48,index_tgfb3]
-bar3 = state[5][t48,index_tgfb3]
+bar2 = state[2][t48,index_tgfb3]
+bar3 = state[3][t48,index_tgfb3]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2C,bar1)
 push!(F2C,bar2)
 push!(F2C,bar3)
 # PANEL D
 bar1 = state[1][t48,index_vim]
-bar2 = state[4][t48,index_vim]
-bar3 = state[5][t48,index_vim]
+bar2 = state[2][t48,index_vim]
+bar3 = state[3][t48,index_vim]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2D,bar1)
 push!(F2D,bar2)
@@ -237,8 +242,8 @@ end
 if sim_select == pan_e
 # PANEL E
 bar1 = state[1][t48,index_lef] + state[1][t48,index_lef_act]
-bar2 = state[4][t48,index_lef] + state[4][t48,index_lef_act]
-bar3 = state[6][t48,index_lef] + state[6][t48,index_lef_act]
+bar2 = state[2][t48,index_lef] + state[2][t48,index_lef_act]
+bar3 = state[3][t48,index_lef] + state[3][t48,index_lef_act]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2E,bar1)
 push!(F2E,bar2)
@@ -249,8 +254,8 @@ end
 if sim_select == pan_f
 # PANEL F # index_ecad_bcat
 bar1 = state[1][t48,index_ecad] + state[1][t48,index_ecad_bcat]
-bar2 = state[4][t48,index_ecad] + state[4][t48,index_ecad_bcat]
-bar3 = state[7][t48,index_ecad] + state[7][t48,index_ecad_bcat]
+bar2 = state[2][t48,index_ecad] + state[2][t48,index_ecad_bcat]
+bar3 = state[3][t48,index_ecad] + state[3][t48,index_ecad_bcat]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2F,bar1)
 push!(F2F,bar2)
@@ -261,8 +266,8 @@ if sim_select == pan_g
 
 # PANEL G
 bar1 = state[1][t48,index_lef] + state[1][t48,index_lef_act]
-bar2 = state[8][t48,index_lef] + state[8][t48,index_lef_act]
-bar3 = state[9][t48,index_lef] + state[9][t48,index_lef_act]
+bar2 = state[2][t48,index_lef] + state[2][t48,index_lef_act]
+bar3 = state[3][t48,index_lef] + state[3][t48,index_lef_act]
 bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
 push!(F2G,bar1)
 push!(F2G,bar2)
@@ -273,9 +278,9 @@ end
 if sim_select == pan_h
 # PANEL H
 bar1 = state[1][t48,index_vim]
-bar2 = state[8][t48,index_vim]
-bar3 = state[9][t48,index_vim]
-bar4 = state[10][t48,index_vim]
+bar2 = state[2][t48,index_vim]
+bar3 = state[3][t48,index_vim]
+bar4 = state[4][t48,index_vim]
 bar1,bar2,bar3,bar4=norm_dat([bar1,bar2,bar3,bar4])
 push!(F2H,bar1)
 push!(F2H,bar2)
@@ -284,9 +289,9 @@ push!(F2H,bar4)
 
 # PANEL I
 bar1 = state[1][t48,index_ecad] + state[1][t48,index_ecad_bcat]
-bar2 = state[8][t48,index_ecad] + state[8][t48,index_ecad_bcat]
-bar3 = state[9][t48,index_ecad] + state[9][t48,index_ecad_bcat]
-bar4 = state[10][t48,index_ecad]+ state[10][t48,index_ecad_bcat]
+bar2 = state[2][t48,index_ecad] + state[2][t48,index_ecad_bcat]
+bar3 = state[3][t48,index_ecad] + state[3][t48,index_ecad_bcat]
+bar4 = state[4][t48,index_ecad] + state[4][t48,index_ecad_bcat]
 bar1,bar2,bar3,bar4=norm_dat([bar1,bar2,bar3,bar4])
 push!(F2I,bar1)
 push!(F2I,bar2)
@@ -300,10 +305,12 @@ end
 
 # PANEL J
 
-bar1 = state[2][t0,index_ecad_mrna]
-bar2 = state[2][t24,index_ecad_mrna]
-bar3 = state[2][t48,index_ecad_mrna]
-bar4 = state[2][t72,index_ecad_mrna]
+if sim_select == [2] # this set of panels doesn't work in the same way, there is no cross validation
+
+bar1 = state[1][t0,index_ecad_mrna]
+bar2 = state[1][t24,index_ecad_mrna]
+bar3 = state[1][t48,index_ecad_mrna]
+bar4 = state[1][t72,index_ecad_mrna]
 bar1,bar2,bar3,bar4=norm_dat([bar1,bar2,bar3,bar4])
 push!(F2J,bar1)
 push!(F2J,bar2)
@@ -311,10 +318,10 @@ push!(F2J,bar3)
 push!(F2J,bar4)
 
 # PANEL K
-bar1 = state[2][t0,index_psmad]
-bar2 = state[2][t24,index_psmad]
-bar3 = state[2][t48,index_psmad]
-bar4 = state[2][t72,index_psmad]
+bar1 = state[1][t0,index_psmad]
+bar2 = state[1][t24,index_psmad]
+bar3 = state[1][t48,index_psmad]
+bar4 = state[1][t72,index_psmad]
 bar1,bar2,bar3,bar4=norm_dat([bar1,bar2,bar3,bar4])
 push!(F2K,bar1)
 push!(F2K,bar2)
@@ -323,16 +330,16 @@ push!(F2K,bar4)
 
 # PANEL L
 
-bar1 = state[2][t0,index_lef_mrna]
-bar2 = state[2][t24,index_lef_mrna]
-bar3 = state[2][t48,index_lef_mrna]
-bar4 = state[2][t72,index_lef_mrna]
+bar1 = state[1][t0,index_lef_mrna]
+bar2 = state[1][t24,index_lef_mrna]
+bar3 = state[1][t48,index_lef_mrna]
+bar4 = state[1][t72,index_lef_mrna]
 bar1,bar2,bar3,bar4=norm_dat([bar1,bar2,bar3,bar4])
 push!(F2L,bar1)
 push!(F2L,bar2)
 push!(F2L,bar3)
 push!(F2L,bar4)
-
+end
 # indices for simulation data array sim_data
 # 1 "edit_file_none.jl"
 # 2 "edit_file_tgfb.jl"
@@ -354,6 +361,9 @@ N = length(PC_results)
 
 # println(F2A[3:3:end])
 #std(Array{Float64,1}(F2A[3:3:end]))
+
+#out_dir = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/"
+out_dir = string(readdir,"/")
 
 if sim_select == pan_a # AB
   F2A = [sum(F2A[1:3:end])/N,sum(F2A[2:3:end])/N,sum(F2A[3:3:end])/N,std(F2A[1:3:end]),std(F2A[2:3:end]),std(F2A[3:3:end])]
@@ -388,16 +398,35 @@ writedlm(string(out_dir,"F2H",".dat"),F2H)
 writedlm(string(out_dir,"F2I",".dat"),F2I)
 end
 
-F2J = [sum(F2J[1:4:end])/N,sum(F2J[2:4:end])/N,sum(F2J[3:4:end])/N,sum(F2J[4:4:end])/N,std(F2J[1:4:end]),std(F2J[2:4:end]),std(F2J[3:4:end]),std(F2J[4:4:end])]
-F2K = [sum(F2K[1:4:end])/N,sum(F2K[2:4:end])/N,sum(F2K[3:4:end])/N,sum(F2K[4:4:end])/N,std(F2K[1:4:end]),std(F2K[2:4:end]),std(F2K[3:4:end]),std(F2K[4:4:end])]
-F2L = [sum(F2L[1:4:end])/N,sum(F2L[2:4:end])/N,sum(F2L[3:4:end])/N,sum(F2L[4:4:end])/N,std(F2L[1:4:end]),std(F2L[2:4:end]),std(F2L[3:4:end]),std(F2L[4:4:end])]
+if sim_select == []
+#F2J = [sum(F2J[1:4:end])/N,sum(F2J[2:4:end])/N,sum(F2J[3:4:end])/N,sum(F2J[4:4:end])/N,std(F2J[1:4:end]),std(F2J[2:4:end]),std(F2J[3:4:end]),std(F2J[4:4:end])]
+#F2K = [sum(F2K[1:4:end])/N,sum(F2K[2:4:end])/N,sum(F2K[3:4:end])/N,sum(F2K[4:4:end])/N,std(F2K[1:4:end]),std(F2K[2:4:end]),std(F2K[3:4:end]),std(F2K[4:4:end])]
+#F2L = [sum(F2L[1:4:end])/N,sum(F2L[2:4:end])/N,sum(F2L[3:4:end])/N,sum(F2L[4:4:end])/N,std(F2L[1:4:end]),std(F2L[2:4:end]),std(F2L[3:4:end]),std(F2L[4:4:end])]
 
-out_dir = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/"
+# J E-cad mRNA
+ecad_mrna_0,sd1 = 1.0,0.04
+ecad_mrna_24,sd2 = 0.6,0.05
+ecad_mrna_48,sd3 = 0.3,0.03
+ecad_mrna_72,sd4 = 0.0,0.001
+
+# K pSmad
+psmad_0,sd5 = 0.0,0.001
+psmad_24,sd6 = 0.12,0.02
+psmad_48,sd7 = 0.88,0.06
+psmad_72,sd8 = 1.0,0.06
+
+# L mRNA LEF1
+lef1_mrna_0,sd9 = 0.0,0.001
+lef1_mrna_24,sd10 = 0.05,0.01
+lef1_mrna_48,sd11 = 0.62,0.06
+lef1_mrna_72,sd12 = 1.0,0.05
+
+F2J = [ecad_mrna_0,ecad_mrna_24,ecad_mrna_48,ecad_mrna_72,sd1,sd2,sd3,sd4]
+F2K = [psmad_0,psmad_24,psmad_48,psmad_72,sd5,sd6,sd7,sd8]
+F2L = [lef1_mrna_0,lef1_mrna_24,lef1_mrna_48,lef1_mrna_72,sd9,sd10,sd11,sd12]
 
 writedlm(string(out_dir,"F2J",".dat"),F2J)
 writedlm(string(out_dir,"F2K",".dat"),F2K)
 writedlm(string(out_dir,"F2L",".dat"),F2L)
-
+end
 println(now())
-
-## Need to edit state array indices and save directories
