@@ -12,7 +12,7 @@ control_parameter_update_array = [];
 
 # rates
 # TGFB dosing
-push!(rate_constant_update_array,[tgfb12_forward_rate_index,4.0]) # addition_TGFb12: [] =([])=> TGFB12
+push!(rate_constant_update_array,[tgfb12_forward_rate_index,tgfb_add_forward_rate]) # addition_TGFb12: [] =([])=> TGFB12
 push!(rate_constant_update_array,[tgfb12_reverse_rate_index,0.1]) # addition_TGFb12: TGFB12 =([])=> [] (reverse)
 
 

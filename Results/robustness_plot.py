@@ -30,12 +30,12 @@ def build_lists(A,i,j):
 fig = plt.figure(1,figsize=(30,20))
 
 # plot settings
-ylab = "Ecadherin Robustness"
+ylab = "E-Cadherin Robustness"
 xlab = "Vimentin Robustness" 
 
 # 1 vegf plot
 plt.subplot(321)
-title = "VEGF"
+title = "VEGFA"
 ecad_index = 2
 vim_index = 3
 #r1 = plt.Rectangle( (0,0),10,10,facecolor='orange',alpha=0.5,zorder=1)
@@ -52,7 +52,7 @@ execfile("scatter.py")
 
 # 3 tgfb vegf plot
 plt.subplot(325)
-title = u'TGF${\\beta}$12 + VEGF'
+title = u'TGF${\\beta}$12 + VEGFA'
 ecad_index = 4
 vim_index = 5
 
@@ -60,7 +60,7 @@ execfile("scatter.py")
 
 # 4 vegf+vi plot
 plt.subplot(322)
-title = 'VEGF + VIVIT'
+title = 'VEGFA + VIVIT'
 ecad_index = 10
 vim_index = 11
 
@@ -76,7 +76,7 @@ execfile("scatter.py")
 
 # 6 tgfb+vegf+vi plot
 plt.subplot(326)
-title = u'TGF${\\beta}$12 + VEGF \n+ VIVIT'
+title = u'TGF${\\beta}$12 + VEGFA \n+ VIVIT'
 ecad_index = 6
 vim_index = 7
 

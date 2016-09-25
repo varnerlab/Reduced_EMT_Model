@@ -137,7 +137,7 @@ tscript_mult = 0.2 # 0.033
 end
 
 
-function SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim_RCA)
+@debug function SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim_RCA)
 
   include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
   UpdateArray(data_dictionary_active,"INITIAL_CONDITION_ARRAY",initial_cond_update_array)
@@ -147,6 +147,9 @@ function SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim_RCA)
   ### IT HAD BEEN COMPESATED FOR BY THE MEMORY LEAK FROM THE STEADYSTATE FUNCTION ..
 
   UpdateArray(data_dictionary_active,"RATE_CONSTANT_ARRAY",sim_RCA)
+  # @show sim_RCA
+  # @show data_dictionary_active["RATE_CONSTANT_ARRAY"]
+  # @bp
   # Run the simulation -
   rate_constant_array = data_dictionary_active["RATE_CONSTANT_ARRAY"];
   rate_constant_array[script_start:script_end]=tscript_mult*rate_constant_array[script_start:script_end]*const_transcription

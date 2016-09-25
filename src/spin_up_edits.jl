@@ -4,6 +4,7 @@ include("edit_file_none.jl")
 push!(simulations,rate_constant_update_array)
 include("edit_file_tgfb.jl")
 push!(simulations,rate_constant_update_array)
+@show rate_constant_update_array
 include("edit_file_mapkin.jl")
 push!(simulations,rate_constant_update_array)
 include("edit_file_ss.jl")

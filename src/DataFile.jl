@@ -281,10 +281,10 @@ push!(rate_constant_array,1.0);	# 30	deactivation_RAF_P: RAF_P =(PPase)=> RAF
 push!(rate_constant_array,1.0);	# 31	deactivation_RAS_GTP: RAS_GTP =([])=> RAS
 push!(rate_constant_array,1.0);	# 32	deactivation_pMAPK: pMAPK =(PPase)=> MAPK
 push!(rate_constant_array,1.0);	# 33	deactivation_AP1_SP1: AP1_SP1_P =(PPase)=> AP1_SP1
-push!(rate_constant_array,1.0);	# 34	deactivation_Active_PLCy: Active_PLCy =([])=> PLCy
+push!(rate_constant_array,25.0);	# 34	deactivation_Active_PLCy: Active_PLCy =([])=> PLCy
 push!(rate_constant_array,1.0);	# 35	deactivation_Active_PKC: Active_PKC =([])=> PKC
-push!(rate_constant_array,1.0);	# 36	deactivation_Active_Calcineurin: Active_Calcineurin =([])=> Calcineurin
-push!(rate_constant_array,1.0);	# 37	deactivation_Active_NFATc: Active_NFATc =([])=> NFATc
+push!(rate_constant_array,100.0);	# 36	deactivation_Active_Calcineurin: Active_Calcineurin =([])=> Calcineurin
+push!(rate_constant_array,100.0);	# 37	deactivation_Active_NFATc: Active_NFATc =([])=> NFATc
 push!(rate_constant_array,1.0);	# 38	deactivation_GSK3_P: GSK3_P =(PPase)=> GSK3
 push!(rate_constant_array,0.1);	# 39	degradation_TGFB12_R: TGFB12_R =([])=> []
 push!(rate_constant_array,0.1);	# 40	degradation_TGFB3_R: TGFB3_R =([])=> []

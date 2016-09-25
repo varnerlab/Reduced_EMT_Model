@@ -23,4 +23,6 @@ out_tmp
 parallel_regen_prep_plot.jl  
   
   
-  
+
+# run robustness
+julia run_robustness.jl > robustness.out &

@@ -1,5 +1,7 @@
 include("edit_file_global.jl")
 simulations = []
+include("edit_file_tgfb.jl")
+push!(simulations,rate_constant_update_array)
 include("edit_file_vegf.jl")
 push!(simulations,rate_constant_update_array)
 include("edit_file_vegf_vi.jl")
@@ -12,4 +14,3 @@ include("edit_file_vegf_vi.jl")
 push!(simulations,rate_constant_update_array)
 include("edit_file_tgfb_vegf_vi.jl")
 push!(simulations,rate_constant_update_array)
-

@@ -20,6 +20,18 @@ function UpdateArray(data_dictionary,string,alterations)
   return data_array
 end
 
+
+##
+
+#tgfb forward rate
+
+forward_master = 0.5 #0.5
+
+tgfb_add_forward_rate = forward_master #4.0
+vegf_add_forward_rate = forward_master*10
+vivit_add_forward_rate = forward_master*10
+
+##
 #### set values for multiple variables
 
 # # # TGFB SIGNALING RATES
@@ -258,7 +270,7 @@ push!(rate_constant_update_array,[MAPK_activation_AP1_SP1_rate_index,tgfb12_to_a
 push!(rate_constant_update_array,[MAPK_activation_smad_rate_index,MAPK_activation_smad_rate]) # MAPK_phosphorylation_AP1_SP1: AP1_SP1 =(pMAPK)=> AP1_SP1_P
 
 # VEGF signaing
-push!(rate_constant_update_array,[PKC_activation_RAF_rate_index,0.1]) # PKC_activation_RAF: RAF =(Active_PKC)=> RAF_P
+push!(rate_constant_update_array,[PKC_activation_RAF_rate_index,0.0]) # PKC_activation_RAF: RAF =(Active_PKC)=> RAF_P
 
 # Bcatenin complex formation
 push!(rate_constant_update_array,[bcat_ecad_forward_index,ecad_complex_gain]) # 19	Binding_Ecadherin_Bcatenin: Ecadherin+Bcatenin =([])=> Ecadherin_Bcatenin

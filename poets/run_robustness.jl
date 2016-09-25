@@ -70,6 +70,15 @@ for i in 1:popsize
   control_parameter_array[6,1]=0.001 # GAIN NFATc1 -> Ecadherin_Bcatenin
   control_parameter_array[6,2]=1.5 # ORDER
   data_dictionary["CONTROL_PARAMETER_ARRAY"]=control_parameter_array
+  rate_constant_array=data_dictionary["RATE_CONSTANT_ARRAY"]
+# degradation rates
+  rate_constant_array[34]=25.0
+  rate_constant_array[36]=100.0
+  rate_constant_array[37]=100.0
+# PKC->RAF activation rate
+  rate_constant_array[11]=0.0
+  data_dictionary["RATE_CONSTANT_ARRAY"]=rate_constant_array
+
   # Rebuild SCA
   sca_pack = zip(sca_indices,P[B+1:C]) # new values
   for (i,val) in sca_pack
@@ -139,7 +148,7 @@ index_vim = 63
 t0  = 1
 t24 = 74
 t48 = 149
-ti = t24
+ti = t0
 tf = t48
 TIME = collect(ti:tf)
 
@@ -242,6 +251,8 @@ push!(state_robustness_values, robustness_vim)
 # sample from 0 to 48 hrs and integrate
 base_ = state[1]
 pert_ = state[7]
+# base_ = state[2]# test
+# pert_ = state[2]
 
 base_ecad = base_[ti:tf,index_ecad] + base_[ti:tf,index_ecad_bcat]
 pert_ecad = pert_[ti:tf,index_ecad] + pert_[ti:tf,index_ecad_bcat]
