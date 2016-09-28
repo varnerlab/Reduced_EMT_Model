@@ -27,11 +27,11 @@ def build_lists(A,i,j):
     return out1,out2    
 
 # create figure
-fig = plt.figure(1,figsize=(30,20))
+fig = plt.figure(1,figsize=(20,20))
 
 # plot settings
-ylab = "E-Cadherin Robustness"
-xlab = "Vimentin Robustness"
+ylab = "E-Cadherin [nM]"
+xlab = "Vimentin [nM]"
 
 #ylab = "E-Cadherin nM"
 #xlab = "Vimentin nM" 
@@ -43,7 +43,7 @@ ecad_index = 2
 vim_index = 3
 #r1 = plt.Rectangle( (0,0),10,10,facecolor='orange',alpha=0.5,zorder=1)
 
-execfile("scatter.py")
+execfile("scatter_abundance.py")
 #ax.add_patch(r1)
 # 2 tgfb plot
 plt.subplot(323)
@@ -51,7 +51,7 @@ title = u'TGF${\\beta}$12'
 ecad_index = 0
 vim_index = 1
 
-execfile("scatter.py")
+execfile("scatter_abundance.py")
 
 # 3 tgfb vegf plot
 plt.subplot(325)
@@ -59,7 +59,7 @@ title = u'TGF${\\beta}$12 + VEGFA'
 ecad_index = 4
 vim_index = 5
 
-execfile("scatter.py")
+execfile("scatter_abundance.py")
 
 # 4 vegf+vi plot
 plt.subplot(322)
@@ -67,7 +67,7 @@ title = 'VEGFA + VIVIT'
 ecad_index = 10
 vim_index = 11
 
-execfile("scatter.py")
+execfile("scatter_abundance.py")
 
 # 5 tgfb+vi plot
 title = u'TGF${\\beta}$12 + VIVIT'
@@ -75,7 +75,7 @@ plt.subplot(324)
 ecad_index = 8
 vim_index = 9
 
-execfile("scatter.py")
+execfile("scatter_abundance.py")
 
 # 6 tgfb+vegf+vi plot
 plt.subplot(326)
@@ -83,10 +83,10 @@ title = u'TGF${\\beta}$12 + VEGFA \n+ VIVIT'
 ecad_index = 6
 vim_index = 7
 
-execfile("scatter.py")
+execfile("scatter_abundance.py")
 
 
 # Save figure
-label = 'robustness_fig_4'
+label = 'phenotype_abundance_fig_4'
 fname = dir_out+'%s.png'%(label)
 plt.savefig(fname,bbox_inches='tight') # dpi=100      y

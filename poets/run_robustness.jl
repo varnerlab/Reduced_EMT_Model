@@ -15,7 +15,7 @@ include(fpath)
 # Establish simulation parameters
 TSTART = 0.0;
 Ts = 1.0; # 0.1
-TSTOP = 250.0; # 100 ; 500
+TSTOP = 250.0; # 250
 
 # Initialize intial data dictionary
 data_dictionary = DataFile(TSTART,TSTOP,Ts)
@@ -129,25 +129,30 @@ function trapz{Tx<:Number, Ty<:Number}(x::Vector{Tx}, y::Vector{Ty})
     =#
     return r/2
 end
-
+#@show "BYPASS ROBUSTNESS CALC"
 function compute_robustness(BASE,PERT,TIME_B,TIME_P,K=0)
 
 base_auc = trapz(TIME_B,BASE)
 pert_auc = trapz(TIME_P,PERT)
 ROBUSTNESS = (pert_auc)/(K+base_auc)
 
-return ROBUSTNESS
+return PERT[t48]
+#return ROBUSTNESS
 end
 
 # ecadherin protein (unbound)
 index_ecad = 51
+#index_ecad = 16 # MRNA!!
 # ecad_bcat index
 index_ecad_bcat = 53
 # vimentin protein
 index_vim = 63
+#index_vim = 85 # MRNA
 t0  = 1
 t24 = 74
 t48 = 149
+t72 = 224
+t96 = 298
 ti = t0
 tf = t48
 TIME = collect(ti:tf)
@@ -176,8 +181,8 @@ base_ = state[1]
 pert_ = state[2]
 
 # select species and time range from simulation
-base_ecad = base_[ti:tf,index_ecad] + base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] + pert_[ti:tf,index_ecad_bcat]
+base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
+pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
 base_vim  = base_[ti:tf,index_vim]
 pert_vim  = pert_[ti:tf,index_vim]
 
@@ -192,8 +197,8 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[3]
 
-base_ecad = base_[ti:tf,index_ecad] + base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] + pert_[ti:tf,index_ecad_bcat]
+base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
+pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
 base_vim  = base_[ti:tf,index_vim]
 pert_vim  = pert_[ti:tf,index_vim]
 
@@ -207,8 +212,8 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[4]
 
-base_ecad = base_[ti:tf,index_ecad] + base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] + pert_[ti:tf,index_ecad_bcat]
+base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
+pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
 base_vim  = base_[ti:tf,index_vim]
 pert_vim  = pert_[ti:tf,index_vim]
 
@@ -222,8 +227,8 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[5]
 
-base_ecad = base_[ti:tf,index_ecad] + base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] + pert_[ti:tf,index_ecad_bcat]
+base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
+pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
 base_vim  = base_[ti:tf,index_vim]
 pert_vim  = pert_[ti:tf,index_vim]
 
@@ -237,8 +242,8 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[6]
 
-base_ecad = base_[ti:tf,index_ecad] + base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] + pert_[ti:tf,index_ecad_bcat]
+base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
+pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
 base_vim  = base_[ti:tf,index_vim]
 pert_vim  = pert_[ti:tf,index_vim]
 
@@ -254,8 +259,8 @@ pert_ = state[7]
 # base_ = state[2]# test
 # pert_ = state[2]
 
-base_ecad = base_[ti:tf,index_ecad] + base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] + pert_[ti:tf,index_ecad_bcat]
+base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
+pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
 base_vim  = base_[ti:tf,index_vim]
 pert_vim  = pert_[ti:tf,index_vim]
 
@@ -264,6 +269,9 @@ robustness_vim  = compute_robustness(base_vim,pert_vim,TIME,TIME,K)
 push!(state_robustness_values, robustness_ecad)
 push!(state_robustness_values, robustness_vim)
 
+# let's report the base case
+push!(state_robustness_values, base_ecad[t48])
+push!(state_robustness_values, base_vim[t48])
 
 push!(robustness_array, state_robustness_values)
 

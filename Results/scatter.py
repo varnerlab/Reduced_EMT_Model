@@ -16,7 +16,8 @@ ymin,ymax = 10**-2,10**3
 xmin,xmax = 10**-1,10**5
 ymin,ymax = 10**-1,10**2
 
-
+#xmin,xmax = 10**-3,10**3
+#ymin,ymax = 10**-3,10**3
 
 ax = plt.gca()
 ax.set_ylim(ymin=ymin)
