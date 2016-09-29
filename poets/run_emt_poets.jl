@@ -34,6 +34,6 @@ println(now())
 
 
 
-writedlm("$outdir/EC.dat", EC)
-writedlm("$outdir/PC.dat", PC)
-writedlm("$outdir/RA.dat", RA)
+writedlm("$outdir/EC2.dat", EC)
+writedlm("$outdir/PC2.dat", PC)
+writedlm("$outdir/RA2.dat", RA)

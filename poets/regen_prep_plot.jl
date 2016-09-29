@@ -120,6 +120,8 @@ index_psmad = 40
 index_lef_mrna = 84
 index_ecad_mrna = 16
 
+index_gsk3_p = 44
+
 ## Designate arrays for each figure
 
 F2A = Array{Float64,1}([])
@@ -134,6 +136,8 @@ F2I = Array{Float64,1}([])
 F2J = Array{Float64,1}([])
 F2K = Array{Float64,1}([])
 F2L = Array{Float64,1}([])
+
+F3B = Array{Float64,1}([])
 
 t0  = 1
 t24 = 74
@@ -275,6 +279,16 @@ push!(F2L,bar2)
 push!(F2L,bar3)
 push!(F2L,bar4)
 
+# Figure 3B
+
+bar1 = state[1][t48,index_gsk3_p]
+bar2 = state[8][t48,index_gsk3_p]
+bar3 = state[11][t48,index_gsk3_p]
+bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
+push!(F3B,bar1)
+push!(F3B,bar2)
+push!(F3B,bar3)
+
 # indices for simulation data array sim_data
 # 1 "edit_file_none.jl"
 # 2 "edit_file_tgfb.jl"
@@ -310,6 +324,9 @@ F2J = [sum(F2J[1:4:end])/N,sum(F2J[2:4:end])/N,sum(F2J[3:4:end])/N,sum(F2J[4:4:e
 F2K = [sum(F2K[1:4:end])/N,sum(F2K[2:4:end])/N,sum(F2K[3:4:end])/N,sum(F2K[4:4:end])/N,std(F2K[1:4:end]),std(F2K[2:4:end]),std(F2K[3:4:end]),std(F2K[4:4:end])]
 F2L = [sum(F2L[1:4:end])/N,sum(F2L[2:4:end])/N,sum(F2L[3:4:end])/N,sum(F2L[4:4:end])/N,std(F2L[1:4:end]),std(F2L[2:4:end]),std(F2L[3:4:end]),std(F2L[4:4:end])]
 
+F3B = [sum(F3B[1:3:end])/N,sum(F3B[2:3:end])/N,sum(F3B[3:3:end])/N,std(F3B[1:3:end]),std(F3B[2:3:end]),std(F3B[3:3:end])]
+
+
 out_dir = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/"
 
 writedlm(string(out_dir,"F2A",".dat"),F2A)
@@ -324,5 +341,7 @@ writedlm(string(out_dir,"F2I",".dat"),F2I)
 writedlm(string(out_dir,"F2J",".dat"),F2J)
 writedlm(string(out_dir,"F2K",".dat"),F2K)
 writedlm(string(out_dir,"F2L",".dat"),F2L)
+
+writedlm(string(out_dir,"F3B",".dat"),F3B)
 
 println(now())

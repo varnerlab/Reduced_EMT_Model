@@ -19,7 +19,10 @@ for i in range(len(objects)):
 
 for i in range(len(objects)):
     barlist2[i].set_color('lightgray')
-    barlist2[i].set_hatch('/\\')
+    if figlab == "J" or figlab == "K" or figlab == "L":
+        barlist2[i].set_hatch('/')
+    else:
+        barlist2[i].set_hatch('/\\')
     barlist2[i].set_edgecolor('black')
 
 ax = plt.gca()
@@ -46,8 +49,8 @@ import matplotlib.ticker as plticker
 loc = plticker.MultipleLocator(base=0.3) # this locator puts ticks at regular intervals
 ax.yaxis.set_major_locator(loc)
 
-plt.text(0.5, 0.82, title,
-                  horizontalalignment='left',
+plt.text(0.9, 0.98, title,
+                  horizontalalignment='right',verticalalignment='top',
                   fontsize=28,
                   transform = ax.transAxes)
 
@@ -78,8 +81,13 @@ if blotpic != '':
     posx,posy = refposx+blotposx,refposy+blotposy
     fig.figimage(im, posx,  posy,zorder=1)
     
-    
-plt.tight_layout(pad=0.2, w_pad=0.5, h_pad=1.0)
+# add panel letters 
+plt.text(figlab_x, figlab_y, figlab,fontweight='bold',
+                                             horizontalalignment='left', verticalalignment='top',
+                                             fontsize=34,
+                                             transform = ax.transAxes)
+
+plt.tight_layout(pad=0.2, w_pad=0.2, h_pad=1.0) #w_pad = 0.5 pad =0.2 hpad = 1.0
 # add space to the top
 #fig.subplots_adjust(top=1.2)
 #plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)

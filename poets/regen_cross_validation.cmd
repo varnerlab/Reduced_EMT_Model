@@ -21,3 +21,5 @@ julia regen_prep_plot_cross_val.jl results_poets/cross_validation/fold_pop_obj_8
 #7# panels H & I
 julia regen_prep_plot_cross_val.jl results_poets/cross_validation/fold_pop_obj_9 [1,8,9,10] > results_poets/cross_validation/fold_pop_obj_9/regen.out &
 
+#gsk3#
+julia regen_prep_plot_cross_val.jl results_poets/cross_validation/fold_pop_obj_7 [1,8,11] > results_poets/cross_validation/fold_pop_obj_7/regen.out &

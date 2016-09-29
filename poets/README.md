@@ -26,3 +26,8 @@ parallel_regen_prep_plot.jl
 
 # run robustness
 julia run_robustness.jl > robustness.out &
+
+# get nfat and sp1 plot
+
+julia run_regen_abundance_plot.jl > nfataspp.out &
+

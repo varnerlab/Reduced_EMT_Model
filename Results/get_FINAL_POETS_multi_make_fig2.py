@@ -79,8 +79,9 @@ fig = plt.figure(1,figsize=(30,25))
 
 #HARDCODED REFERENCE COORDINATE FOR FIRST BLOT
 
-refposx,refposy = 450,fig.bbox.ymax+480
+refposx,refposy = 450+20,fig.bbox.ymax+480
 displacex,displacey=1000,-650
+refxf,refyf = -0.115,1.225
 # Fig 2 A & B                                                                                                                                                                                                                                                                     
 xlab = u'TGF-${\\beta}$12\nU0126\n '
 objects = ('\n-\n-\n','\n+\n-\n','\n-\n+\n')
@@ -90,6 +91,7 @@ y_pos = np.arange(len(objects))
 title = 'Snail/Slug'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigA.png'
 blotposx,blotposy=0,0
+figlab_x, figlab_y, figlab = refxf, refyf, "A"
 
 Abundance = [ F2A[0], F2A[1], F2A[2] ]
 sds       = [ F2A[3], F2A[4], F2A[5] ]
@@ -105,6 +107,8 @@ ylab_opt = False
 title = 'LEF-1'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigB.png'
 blotposx,blotposy=displacex,0
+figlab_x, figlab_y, figlab = refxf, refyf, "B"
+
 Abundance = [ F2B[0], F2B[1], F2B[2] ]
 sds       = [ F2B[3], F2B[4], F2B[5] ]
 
@@ -122,7 +126,9 @@ y_pos = np.arange(len(objects))
 # C 
 title = u'TGF-${\\beta}$3'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigC_2.png'
-blotposx,blotposy=displacex*2,0 
+blotposx,blotposy=displacex*2,0
+figlab_x, figlab_y, figlab = refxf, refyf, "C"
+
 
 Abundance = [ F2C[0], F2C[1], F2C[2] ]
 sds       = [ F2C[3], F2C[4], F2C[5] ]
@@ -135,7 +141,9 @@ execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd
 # D
 title = 'Vimentin'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigD_2.png'
-blotposx,blotposy=0,displacey 
+blotposx,blotposy=0,displacey
+figlab_x, figlab_y, figlab = refxf, refyf, "D"
+
 Abundance = [ F2D[0], F2D[1], F2D[2] ]
 sds       = [ F2D[3], F2D[4], F2D[5] ]
 
@@ -153,7 +161,9 @@ objects = ('\n-\n-\n','\n+\n-\n','\n+\n+\n')
 # E 
 title = 'LEF-1'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigE_2.png'
-blotposx,blotposy=displacex,displacey 
+blotposx,blotposy=displacex,displacey
+figlab_x, figlab_y, figlab = refxf, refyf, "E"
+
 
 Abundance = [ F2E[0], F2E[1], F2E[2] ]
 sds       = [ F2E[3], F2E[4], F2E[5] ]
@@ -170,7 +180,8 @@ y_pos = np.arange(len(objects))
 # F
 title = 'E-cadherin'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigF_2.png'
-blotposx,blotposy=displacex*2,displacey 
+blotposx,blotposy=displacex*2,displacey
+figlab_x, figlab_y, figlab = refxf, refyf, "F"
 Abundance = [ F2F[0], F2F[1], F2F[2] ]
 sds       = [ F2F[3], F2F[4], F2F[5] ]
 
@@ -187,6 +198,8 @@ y_pos = np.arange(len(objects))
 title = 'LEF-1'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigG.png'
 blotposx,blotposy=0,displacey*2
+figlab_x, figlab_y, figlab = refxf, refyf, "G"
+
 Abundance = [ F2G[0], F2G[1], F2G[2] ]
 sds       = [ F2G[3], F2G[4], F2G[5] ]
 
@@ -208,6 +221,8 @@ y_pos = np.arange(len(objects))
 title = 'Vimentin'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigH.png'
 blotposx,blotposy=displacex,displacey*2
+figlab_x, figlab_y, figlab = refxf, refyf, "H"
+
 Abundance = [ F2H[0], F2H[1], F2H[2], F2H[3] ]
 sds       = [ F2H[4], F2H[5], F2H[6], F2H[7] ]
 
@@ -220,6 +235,8 @@ execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd
 title = 'E-cadherin'
 blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigI.png'
 blotposx,blotposy=displacex*2,displacey*2
+figlab_x, figlab_y, figlab = refxf, refyf, "I"
+
 Abundance = [ F2I[0], F2I[1], F2I[2], F2I[3] ]
 sds       = [ F2I[4], F2I[5], F2I[6], F2I[7] ]
 
@@ -232,10 +249,12 @@ execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd
 # Dynamics J & K & L
 objects = ('\n0','\n24','\n48','\n72')
 y_pos = np.arange(len(objects))
-xlab = '\n                                         Time (hrs) '
+xlab = '\n                                              Time (hrs) '
 
 # J
 title = 'E-cadherin\nmRNA'
+figlab_x, figlab_y, figlab = refxf, refyf, "J"
+
 Abundance = [ F2J[0], F2J[1], F2J[2], F2J[3] ]
 sds       = [ F2J[4], F2J[5], F2J[6], F2J[7] ]
 
@@ -248,6 +267,8 @@ execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd
 ylab_opt = False
 # K
 title = 'pSmad'
+figlab_x, figlab_y, figlab = refxf, refyf, "K"
+
 Abundance = [ F2K[0], F2K[1], F2K[2], F2K[3] ]
 sds       = [ F2K[4], F2K[5], F2K[6], F2K[7] ]
 
@@ -257,6 +278,8 @@ plt.subplot(4,3,11)
 execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
 # L
 title = 'LEF-1\nmRNA'
+figlab_x, figlab_y, figlab = refxf, refyf, "L"
+
 Abundance = [ F2L[0], F2L[1], F2L[2], F2L[3] ]
 sds       = [ F2L[4], F2L[5], F2L[6], F2L[7] ]
 
@@ -265,6 +288,85 @@ sds2       = [ F2L_exp[4], F2L_exp[5], F2L_exp[6], F2L_exp[7] ]
 plt.subplot(4,3,12)
 execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
 
+
+# # # add box around last row
+
+import Image
+if True:
+    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/' 
+    im = Image.open(rootdir+"block.png")
+    width = im.size[0]
+    height = im.size[1]
+    scalex,scaley= 1.515,1.2
+    size = int(width*scalex),int(height*scaley)
+    im=im.resize(size,Image.ANTIALIAS)
+    width = im.size[0]
+    height = im.size[1]
+    im = np.array(im).astype(np.float) / 255
+    #blot_x=0.1
+    #blot_y=1.4 
+    #print(height,width)
+    #ax.imshow(im, aspect='auto', extent=(blot_x, blot_x + 2.4, blot_y, blot_y +0.24), zorder=1)
+
+    plt.text(0.5, 1.3,'.',
+    horizontalalignment='left',
+    fontsize=1,
+    transform = ax.transAxes)
+    posx,posy = refposx-200,refposy+blotposy*2
+    fig.figimage(im, posx,  posy,zorder=-1,alpha=0.15)
+
+
+# re-init
+refposx,refposy = 450,fig.bbox.ymax+480
+
+# # # add legend for top rows
+if True:
+    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/' 
+    im = Image.open(rootdir+"TrainingValidationLegend_vert.png")
+    width = im.size[0]
+    height = im.size[1]
+    scalex,scaley= 0.44,0.44
+    size = int(width*scalex),int(height*scaley)
+    im=im.resize(size,Image.ANTIALIAS)
+    width = im.size[0]
+    height = im.size[1]
+    im = np.array(im).astype(np.float) / 255
+    #blot_x=0.1
+    #blot_y=1.4 
+    #print(height,width)
+    #ax.imshow(im, aspect='auto', extent=(blot_x, blot_x + 2.4, blot_y, blot_y +0.24), zorder=1)
+
+    plt.text(0.5, 1.3,'.',
+    horizontalalignment='left',
+    fontsize=1,
+    transform = ax.transAxes)
+    posx,posy = refposx - 415,refposy-50
+    fig.figimage(im, posx,  posy,zorder=1,alpha=1.0)
+
+# # # add legend for prediction row
+if True:
+    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/' 
+    im = Image.open(rootdir+"PredictionLegend_vert.png")
+    width = im.size[0]
+    height = im.size[1]
+    scalex,scaley= 2.0,2.0
+    size = int(width*scalex),int(height*scaley)
+    im=im.resize(size,Image.ANTIALIAS)
+    width = im.size[0]
+    height = im.size[1]
+    im = np.array(im).astype(np.float) / 255
+    #blot_x=0.1
+    #blot_y=1.4 
+    #print(height,width)
+    #ax.imshow(im, aspect='auto', extent=(blot_x, blot_x + 2.4, blot_y, blot_y +0.24), zorder=1)
+
+    plt.text(0.5, 1.3,'.',
+    horizontalalignment='left',
+    fontsize=1,
+    transform = ax.transAxes)
+    posx,posy = refposx - 400,refposy - 2125
+    fig.figimage(im, posx,  posy,zorder=1,alpha=1.0)
+    
 # # # 
 
 # Save figure

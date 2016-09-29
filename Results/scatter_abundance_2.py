@@ -16,8 +16,8 @@ plt.hold(False)
 
 #plt.title(title)
 
-xmin,xmax = 0,400
-ymin,ymax = 0,400
+xmin,xmax = 0,500
+ymin,ymax = 0,500
 
 #loglog
 #xmin,xmax = 0.001,500

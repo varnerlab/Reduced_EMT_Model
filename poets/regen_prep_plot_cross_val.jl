@@ -44,7 +44,7 @@ sca_pack = zip(sca_indices,sca_values)
 
 # read parameter arrays resulting from POETs
 
-PC = readdlm(string(readdir,"/PC.dat")) #readdir
+PC = readdlm(string(readdir,"/PC2.dat")) #readdir
 
 # PC is an array of parameter arrays
 PC_results =[]
@@ -132,6 +132,7 @@ index_psmad = 40
 index_lef_mrna = 84
 index_ecad_mrna = 16
 
+index_gsk3_p = 44
 ## Designate arrays for each figure
 
 F2A = Array{Float64,1}([])
@@ -146,6 +147,8 @@ F2I = Array{Float64,1}([])
 F2J = Array{Float64,1}([])
 F2K = Array{Float64,1}([])
 F2L = Array{Float64,1}([])
+
+F3B = Array{Float64,1}([])
 
 t0  = 1
 t24 = 74
@@ -193,6 +196,7 @@ pan_f = [1,4,7]
 pan_g = [1,8,9]
 pan_h = pan_i = [1,8,9,10] #
 
+pan3b = [1,8,11]
 
 for state in PC_results
 
@@ -298,8 +302,21 @@ push!(F2I,bar2)
 push!(F2I,bar3)
 push!(F2I,bar4)
 
+
 end
 
+if sim_select == pan3b
+
+# PANEL ####
+bar1 = state[1][t48,index_gsk3_p]
+bar2 = state[2][t48,index_gsk3_p]
+bar3 = state[3][t48,index_gsk3_p]
+bar1,bar2,bar3=norm_dat([bar1,bar2,bar3])
+push!(F3B,bar1)
+push!(F3B,bar2)
+push!(F3B,bar3)
+
+end
 
 # NEED TO PUT qPCR EXPERIMENTAL DATA HERE AND REFERENCE BELOW
 
@@ -396,6 +413,11 @@ F2H = [sum(F2H[1:4:end])/N,sum(F2H[2:4:end])/N,sum(F2H[3:4:end])/N,sum(F2H[4:4:e
 F2I = [sum(F2I[1:4:end])/N,sum(F2I[2:4:end])/N,sum(F2I[3:4:end])/N,sum(F2I[4:4:end])/N,std(F2I[1:4:end]),std(F2I[2:4:end]),std(F2I[3:4:end]),std(F2I[4:4:end])]
 writedlm(string(out_dir,"F2H",".dat"),F2H)
 writedlm(string(out_dir,"F2I",".dat"),F2I)
+end
+
+if sim_select == pan3b # AB
+F3B = [sum(F3B[1:3:end])/N,sum(F3B[2:3:end])/N,sum(F3B[3:3:end])/N,std(F3B[1:3:end]),std(F3B[2:3:end]),std(F3B[3:3:end])]
+writedlm(string(out_dir,"F3B",".dat"),F3B)
 end
 
 if sim_select == []

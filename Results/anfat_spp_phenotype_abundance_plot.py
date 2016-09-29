@@ -3,7 +3,7 @@ import numpy as np
 
 execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
 execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
-dat = lin.reader("../poets/results_poets/Robustness_training_set.dat")
+dat = lin.reader("../poets/results_poets/active_nfat_ap_sp1_p_training_set.dat")
 population = csv.nestedToFlt([( string.replace('Any[' ,'').replace(']','')).split(',') for string in dat]) # python
 
 dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
@@ -33,10 +33,10 @@ fig = plt.figure(1,figsize=(20,20))
 current_panel = 1
 
 # plot settings
-ylab = "E-Cadherin [nM]"
-xlab = "Vimentin [nM]"
+ylab = "Active NFATc1 [nM]"
+xlab = "Active pSp1 [nM]"
 
-#ylab = "E-Cadherin nM"
+#ylab = "Active NFATc nM"
 #xlab = "Vimentin nM" 
 
 # 1 vegf plot
@@ -49,24 +49,24 @@ figlab_x, figlab_y, figlab = refx, refy, "A"
 
 #r1 =plt.Rectangle( (0,0),10,10,facecolor='orange',alpha=0.5,zorder=1)
 
-execfile("scatter_abundance.py")
+execfile("scatter_abundance_2.py")
 #ax.add_patch(r1)
 # 2 tgfb plot
 plt.subplot(323)
-title = u'+ TGF${\\beta}$1/2'
+title = u'+ TGF${\\beta}$12'
 ecad_index = 0
 vim_index = 1
 figlab_x, figlab_y, figlab = refx, refy, "B"
-execfile("scatter_abundance.py")
+execfile("scatter_abundance_2.py")
 
 # 3 tgfb vegf plot
 plt.subplot(325)
-title = u'+ TGF${\\beta}$1/2\n+ VEGFA'
+title = ''# u'+ TGF${\\beta}$12\n+ VEGFA'
 ecad_index = 4
 vim_index = 5
 figlab_x, figlab_y, figlab = refx, refy, "C"
 
-execfile("scatter_abundance.py")
+execfile("scatter_abundance_2.py")
 
 # 4 vegf+vi plot
 plt.subplot(322)
@@ -74,27 +74,27 @@ title = '+ VEGFA\n+ VIVIT'
 ecad_index = 10
 vim_index = 11
 figlab_x, figlab_y, figlab = refx, refy, "D"
-execfile("scatter_abundance.py")
+execfile("scatter_abundance_2.py")
 
 # 5 tgfb+vi plot
-title = u'+ TGF${\\beta}$1/2\n+ VIVIT'
+title = u'+ TGF${\\beta}$12\n+ VIVIT'
 plt.subplot(324)
 ecad_index = 8
 vim_index = 9
 figlab_x, figlab_y, figlab = refx, refy, "E"
 
-execfile("scatter_abundance.py")
+execfile("scatter_abundance_2.py")
 
 # 6 tgfb+vegf+vi plot
 plt.subplot(326)
-title = u'+ TGF${\\beta}$1/2\n+ VEGFA\n+ VIVIT'
+title = u'+ TGF${\\beta}$12\n+ VEGFA\n+ VIVIT'
 ecad_index = 6
 vim_index = 7
 figlab_x, figlab_y, figlab = refx, refy, "F"
-execfile("scatter_abundance.py")
+execfile("scatter_abundance_2.py")
 
 
 # Save figure
-label = 'phenotype_abundance_fig_4'
+label = 'anfat_psp1_phenotype_abundance_fig_4'
 fname = dir_out+'%s.png'%(label)
 plt.savefig(fname,bbox_inches='tight') # dpi=100      y

@@ -15,7 +15,7 @@ include(fpath)
 # Establish simulation parameters
 TSTART = 0.0;
 Ts = 1.0; # 0.1
-TSTOP = 250.0; # 250
+TSTOP = 150.0; # 250
 
 # Initialize intial data dictionary
 data_dictionary = DataFile(TSTART,TSTOP,Ts)
@@ -143,13 +143,13 @@ end
 # # ok we will overwrite these indices to plot nfat and sp1
 
 # ecadherin protein (unbound)
-index_ecad = 51
-#index_ecad = 16 # MRNA!!
+index_active_nfatc = 34
+#index_active_nfatc = 16 # MRNA!!
 # ecad_bcat index
-index_ecad_bcat = 53
+#index_active_nfatc_bcat = 53
 # vimentin protein
-index_vim = 63
-#index_vim = 85 # MRNA
+index_psp1 = 50 #AP1_SP1_P
+#index_psp1 = 85 # MRNA
 t0  = 1
 t24 = 74
 t48 = 149
@@ -183,10 +183,10 @@ base_ = state[1]
 pert_ = state[2]
 
 # select species and time range from simulation
-base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
-base_vim  = base_[ti:tf,index_vim]
-pert_vim  = pert_[ti:tf,index_vim]
+base_ecad = base_[ti:tf,index_active_nfatc] #+ base_[ti:tf,index_active_nfatc_bcat]
+pert_ecad = pert_[ti:tf,index_active_nfatc] #+ pert_[ti:tf,index_active_nfatc_bcat]
+base_vim  = base_[ti:tf,index_psp1]
+pert_vim  = pert_[ti:tf,index_psp1]
 
 # compute robustness
 robustness_ecad = compute_robustness(base_ecad,pert_ecad,TIME,TIME,K)
@@ -199,10 +199,10 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[3]
 
-base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
-base_vim  = base_[ti:tf,index_vim]
-pert_vim  = pert_[ti:tf,index_vim]
+base_ecad = base_[ti:tf,index_active_nfatc] #+ base_[ti:tf,index_active_nfatc_bcat]
+pert_ecad = pert_[ti:tf,index_active_nfatc] #+ pert_[ti:tf,index_active_nfatc_bcat]
+base_vim  = base_[ti:tf,index_psp1]
+pert_vim  = pert_[ti:tf,index_psp1]
 
 robustness_ecad = compute_robustness(base_ecad,pert_ecad,TIME,TIME,K)
 robustness_vim  = compute_robustness(base_vim,pert_vim,TIME,TIME,K)
@@ -214,10 +214,10 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[4]
 
-base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
-base_vim  = base_[ti:tf,index_vim]
-pert_vim  = pert_[ti:tf,index_vim]
+base_ecad = base_[ti:tf,index_active_nfatc] #+ base_[ti:tf,index_active_nfatc_bcat]
+pert_ecad = pert_[ti:tf,index_active_nfatc] #+ pert_[ti:tf,index_active_nfatc_bcat]
+base_vim  = base_[ti:tf,index_psp1]
+pert_vim  = pert_[ti:tf,index_psp1]
 
 robustness_ecad = compute_robustness(base_ecad,pert_ecad,TIME,TIME,K)
 robustness_vim  = compute_robustness(base_vim,pert_vim,TIME,TIME,K)
@@ -229,10 +229,10 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[5]
 
-base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
-base_vim  = base_[ti:tf,index_vim]
-pert_vim  = pert_[ti:tf,index_vim]
+base_ecad = base_[ti:tf,index_active_nfatc] #+ base_[ti:tf,index_active_nfatc_bcat]
+pert_ecad = pert_[ti:tf,index_active_nfatc] #+ pert_[ti:tf,index_active_nfatc_bcat]
+base_vim  = base_[ti:tf,index_psp1]
+pert_vim  = pert_[ti:tf,index_psp1]
 
 robustness_ecad = compute_robustness(base_ecad,pert_ecad,TIME,TIME,K)
 robustness_vim  = compute_robustness(base_vim,pert_vim,TIME,TIME,K)
@@ -244,10 +244,10 @@ push!(state_robustness_values, robustness_vim)
 base_ = state[1]
 pert_ = state[6]
 
-base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
-base_vim  = base_[ti:tf,index_vim]
-pert_vim  = pert_[ti:tf,index_vim]
+base_ecad = base_[ti:tf,index_active_nfatc] #+ base_[ti:tf,index_active_nfatc_bcat]
+pert_ecad = pert_[ti:tf,index_active_nfatc] #+ pert_[ti:tf,index_active_nfatc_bcat]
+base_vim  = base_[ti:tf,index_psp1]
+pert_vim  = pert_[ti:tf,index_psp1]
 
 robustness_ecad = compute_robustness(base_ecad,pert_ecad,TIME,TIME,K)
 robustness_vim  = compute_robustness(base_vim,pert_vim,TIME,TIME,K)
@@ -261,10 +261,10 @@ pert_ = state[7]
 # base_ = state[2]# test
 # pert_ = state[2]
 
-base_ecad = base_[ti:tf,index_ecad] #+ base_[ti:tf,index_ecad_bcat]
-pert_ecad = pert_[ti:tf,index_ecad] #+ pert_[ti:tf,index_ecad_bcat]
-base_vim  = base_[ti:tf,index_vim]
-pert_vim  = pert_[ti:tf,index_vim]
+base_ecad = base_[ti:tf,index_active_nfatc] #+ base_[ti:tf,index_active_nfatc_bcat]
+pert_ecad = pert_[ti:tf,index_active_nfatc] #+ pert_[ti:tf,index_active_nfatc_bcat]
+base_vim  = base_[ti:tf,index_psp1]
+pert_vim  = pert_[ti:tf,index_psp1]
 
 robustness_ecad = compute_robustness(base_ecad,pert_ecad,TIME,TIME,K)
 robustness_vim  = compute_robustness(base_vim,pert_vim,TIME,TIME,K)
@@ -283,7 +283,7 @@ end
 
 out_dir = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/"
 
-writedlm(string(out_dir,"Robustness_training_set",".dat"),robustness_array,',')
+writedlm(string(out_dir,"active_nfat_ap_sp1_p_training_set",".dat"),robustness_array,',')
 # execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
 # execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
 # b = lin.reader("results_poets/Robustness_training_set.dat")
