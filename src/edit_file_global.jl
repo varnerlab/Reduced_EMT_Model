@@ -27,7 +27,7 @@ end
 
 forward_master = 0.5 #0.5
 
-tgfb_add_forward_rate = forward_master #4.0
+tgfb_add_forward_rate = 4#forward_master #4.0
 vegf_add_forward_rate = forward_master*10
 vivit_add_forward_rate = forward_master*10
 

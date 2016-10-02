@@ -1,0 +1,11 @@
+#julia run_crossval_set.jl 1 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 2 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 3 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 4 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 5 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 6 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 7 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 8 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 9 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 10 > results_poets/cross_validation/crossval_basic_generate.out &
+julia run_crossval_set.jl 11 > results_poets/cross_validation/crossval_basic_generate.out &

@@ -44,7 +44,7 @@ sca_pack = zip(sca_indices,sca_values)
 
 # read parameter arrays resulting from POETs
 
-PC = readdlm(string(readdir,"/PC2.dat")) #readdir
+PC = readdlm(string(readdir,"/PC.dat")) #readdir
 
 # PC is an array of parameter arrays
 PC_results =[]

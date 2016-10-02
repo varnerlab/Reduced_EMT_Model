@@ -8,6 +8,14 @@ BIG = 1e10
 num_objs = 11 # changes for cross validation
 SMALL = 1e-3
 
+###################
+try
+@show start_random
+catch
+global start_random = false
+@show start_random
+end
+###################
 # How we calculate error
 function SSE(model_values,data_values)
   y = model_values
@@ -76,6 +84,7 @@ include(fpath)
  # # # #
 
  # update control parameter array here for now
+ if start_random == false
  GAIN_MASTER = 0.3
  num_regs = 19;
  control_parameter_array=data_dictionary["CONTROL_PARAMETER_ARRAY"]
@@ -137,13 +146,13 @@ include(fpath)
 # # # #
 
  data_dictionary["CONTROL_PARAMETER_ARRAY"]=control_parameter_array
-
  # Also use edit_file_global here
+
  fpath = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl"
  include(fpath)
  UpdateArray(data_dictionary,"INITIAL_CONDITION_ARRAY",initial_cond_update_array)
  UpdateArray(data_dictionary,"RATE_CONSTANT_ARRAY",rate_constant_update_array)
-
+end
 
 
  println("Running to steady state ... ")
@@ -592,7 +601,7 @@ end
 function cooling_function(temperature)
 
   # define my new temperature -
-  alpha = 0.5 #0.9
+  alpha = 0.8 #0.9   # testing 0.5
   return alpha*temperature
 end
 

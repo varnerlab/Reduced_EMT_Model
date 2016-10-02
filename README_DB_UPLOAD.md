@@ -8,6 +8,6 @@ output
 	Save location for timeseries data files  
 poets  
 	objective functions and poets execution scripts  
-src  
+src
 	Handfit model source (accessed by poets)  
-
+	also contains all simualation specification files (edit_files)
