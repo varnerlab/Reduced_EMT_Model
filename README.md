@@ -26,7 +26,7 @@ The model equations are encoded in ``Balances.jl`` which is called by the ``Solv
 Model source code is contained in the ``<root>/src`` directory. The parameter estimation code is contained in the ``<root>/poets`` directory. The biological structure of the model is given in ``<root>/ModelStructure/Model.net``. The model equations were generated using the [Kwatee code generation system](https://github.com/varnerlab/KwateeServer) using the [GRN plugin](https://github.com/varnerlab/Kwatee-GRN-Plugin.git). 
 
 ### Model code and parameter ensemble
-The EMT model equations were implemented in [Julia](http://julialang.org) and solved using the CVODE routine of the [Sundials package](https://github.com/JuliaLang/Sundials.jl). The model code and parameter ensemble is freely available under an [MIT software license](https://opensource.org/licenses/MIT).
+The EMT model equations were implemented in [Julia](http://julialang.org) and solved using the CVODE routine of the [Sundials package](https://github.com/JuliaLang/Sundials.jl). The model code and parameter ensemble is freely available under an [MIT software license](https://opensource.org/licenses/MIT). Model code is contained within the ``<root>/src`` subdirectory. 
 
 The model ensemble was estimated using the [JuPOETs package](https://github.com/varnerlab/POETs.jl). The EMT objective functions, and problem specific constraints are encoded in ``<root>/poets/emt_grn_model_objective_function.jl``. The JuPOETs package is described in the publication:
 
