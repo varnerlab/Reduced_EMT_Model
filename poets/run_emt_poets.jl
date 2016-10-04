@@ -16,7 +16,7 @@ end
 # FORMAT DATA AND INIT PARAMETER ARRAY
 # INITIALIZE OBJECTIVE FUNCTION
 # DECOMPOSE THIS INTO TWO FILES, ONE FOR INIT AND ANOTHER FOR FUNCS
-fname = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/emt_grn_model_objective_function.jl"
+fname = "../poets/emt_grn_model_objective_function.jl"
 include(fname)
 
 # Set parameters and pointers

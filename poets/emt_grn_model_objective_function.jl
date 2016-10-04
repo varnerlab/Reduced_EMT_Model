@@ -50,7 +50,7 @@ end
 
 #     #    #   # Prep objective data
 # Load and Normalize each blot individually
-fpath="/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/medici_blot_combined.jl"
+fpath="../poets/medici_blot_combined.jl"
 include(fpath)
 #Fig1B = norm_dat(Fig1B)
 #Fig1F = norm_dat(Fig1F)
@@ -70,7 +70,7 @@ include(fpath)
  # Load data dictionary off disk
 
  # Initialize simulation functions
- fpath="/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/new_SimulationFunctions.jl" # Loads up DataFile , SolveBalances , Balances, Kinetics, Control
+ fpath="../src/new_SimulationFunctions.jl" # Loads up DataFile , SolveBalances , Balances, Kinetics, Control
  include(fpath)
 
  # Establish simulation parameters
@@ -148,7 +148,7 @@ include(fpath)
  data_dictionary["CONTROL_PARAMETER_ARRAY"]=control_parameter_array
  # Also use edit_file_global here
 
- fpath = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl"
+ fpath = "../src/edit_file_global.jl"
  include(fpath)
  UpdateArray(data_dictionary,"INITIAL_CONDITION_ARRAY",initial_cond_update_array)
  UpdateArray(data_dictionary,"RATE_CONSTANT_ARRAY",rate_constant_update_array)
@@ -237,7 +237,7 @@ const  C = B + len_sca_prime
 
 # Evaluate blot values (objective targets) before loadin objective function
 
-include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/spin_up_edits.jl")
+include("../src/spin_up_edits.jl")
 
 #Evaluates the objective function values -
 function objective_function(parameter_array)

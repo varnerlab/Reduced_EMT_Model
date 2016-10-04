@@ -2,7 +2,7 @@
 println(now())
 using Debug
 # Initialize simulation functions
-fpath="/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/new_SimulationFunctions.jl" # Loads up DataFile , SolveBalances , Balances, Kinetics, Control
+fpath="../src/new_SimulationFunctions.jl" # Loads up DataFile , SolveBalances , Balances, Kinetics, Control
 include(fpath)
 
 # Establish simulation parameters
@@ -75,7 +75,7 @@ for i in 1:popsize
   for sim in simulations
     ##### What data_dictionary should be loaded here??? clearly the active one
     active_data_dictionary = deepcopy(xss_data_dict)
-    (TSIM,X) =  SolveModelGenericPOETS(TSTART,TSTOP,Ts,active_data_dictionary,string("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/",sim))
+    (TSIM,X) =  SolveModelGenericPOETS(TSTART,TSTOP,Ts,active_data_dictionary,string("../src/",sim))
     push!(sim_data,X)
     # now reset the data dictionary
   end
@@ -161,7 +161,7 @@ end
 end
 
 #
-#out_dir = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/"
+#out_dir = "../poets/results_poets/"
 #writedlm(string(out_dir,"ensemble_dynamics.dat"),PC_results)
 
 for state in PC_results
@@ -327,7 +327,7 @@ F2L = [sum(F2L[1:4:end])/N,sum(F2L[2:4:end])/N,sum(F2L[3:4:end])/N,sum(F2L[4:4:e
 F3B = [sum(F3B[1:3:end])/N,sum(F3B[2:3:end])/N,sum(F3B[3:3:end])/N,std(F3B[1:3:end]),std(F3B[2:3:end]),std(F3B[3:3:end])]
 
 
-out_dir = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/"
+out_dir = "../poets/results_poets/"
 
 writedlm(string(out_dir,"F2A",".dat"),F2A)
 writedlm(string(out_dir,"F2B",".dat"),F2B)

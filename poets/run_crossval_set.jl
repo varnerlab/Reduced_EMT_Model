@@ -1,18 +1,18 @@
 # run_random_set
-fname = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/basic_set_generator.jl"
+fname = "../poets/basic_set_generator.jl"
 include(fname)
 
 var = ARGS[1]
 
 start_random = false # true
 global HOLD=0
-fname = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/emt_grn_model_objective_function.jl"
+fname = "../poets/emt_grn_model_objective_function.jl"
 include(fname)
 
 # Set parameters and pointers
 
 #initial_state = Array{Float64,1}(parameter_array)
-full_pc_array = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/fold_pop_obj_$var/PC.dat")
+full_pc_array = readdlm("../poets/results_poets/cross_validation/fold_pop_obj_$var/PC.dat")
 
 # Execute the beast
 println(now())
@@ -23,7 +23,7 @@ println(now())
 # Save output
 
 
-outdir= "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation"
+outdir= "../poets/results_poets/cross_validation"
 writedlm("$outdir/EC$var.dat", EC)
 #writedlm("$outdir/PC.dat", PC)
 #writedlm("$outdir/RA.dat", RA)

@@ -1,0 +1,36 @@
+CURRENT LOCATION:
+/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets
+MAIN REFERENCE: gen_2_model
+PATH TO MAIN: ../
+REPLACE /home/dbassen/Dropbox/server_swap_space/gen_2_model/ WITH ../
+
+emt_grn_model_objective_function.jl:include(fpath)
+emt_grn_model_objective_function.jl: include(fpath)
+emt_grn_model_objective_function.jl: include(fpath)
+emt_grn_model_objective_function.jl: # get lengths of data dictoinary components to be included in simulation
+emt_grn_model_objective_function.jl:include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/spin_up_edits.jl")
+emt_grn_model_objective_function.jl:# Descriptions include the CURRENT indexed value,
+
+
+regen_prep_plot_cross_val.jl:include(fpath)
+
+regen_prep_plot.jl:include(fpath)
+
+Robustness_eg1.jl:include("Sample.jl")
+Robustness.jl:include("SolveBalances.jl")
+
+run_crossval_set.jl:include(fname)
+run_crossval_set.jl:include(fname)
+
+run_emt_poets.jl:include(fname)
+
+run_random_set.jl:include(fname)
+run_random_set.jl:include(fname)
+
+run_regen_abundance_plot.jl:include(fpath)
+run_regen_abundance_plot_yreg.jl:include(fpath)
+
+run_robustness.jl:include(fpath)
+
+
+# converted to relative paths 10/3/16
