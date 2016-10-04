@@ -1,20 +1,20 @@
-ec_training = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/EC.dat")
-ec_nominal = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/EC_training.dat")
-#ec_random = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/random_set/EC.dat")
+ec_training = readdlm("../poets/EC.dat")
+ec_nominal = readdlm("../poets/EC_training.dat")
+#ec_random = readdlm("../poets/results_poets/random_set/EC.dat")
 #stopgap
-ec_random = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/random_set/EC_full_jl_array.dat")
+ec_random = readdlm("../poets/results_poets/random_set/EC_full_jl_array.dat")
 
-ec_pred1  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC1_jl_array.dat")
-ec_pred2  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC2_jl_array.dat")
-ec_pred3  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC3_jl_array.dat")
-ec_pred4  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC4_jl_array.dat")
-ec_pred5  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC5_jl_array.dat")
-ec_pred6  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC6_jl_array.dat")
-ec_pred7  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC7_jl_array.dat")
-ec_pred8  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC8_jl_array.dat")
-ec_pred9  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC9_jl_array.dat")
-ec_pred10 = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC10_jl_array.dat")
-ec_pred11 = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC11_jl_array.dat")
+ec_pred1  = readdlm("../poets/results_poets/cross_validation/EC1_jl_array.dat")
+ec_pred2  = readdlm("../poets/results_poets/cross_validation/EC2_jl_array.dat")
+ec_pred3  = readdlm("../poets/results_poets/cross_validation/EC3_jl_array.dat")
+ec_pred4  = readdlm("../poets/results_poets/cross_validation/EC4_jl_array.dat")
+ec_pred5  = readdlm("../poets/results_poets/cross_validation/EC5_jl_array.dat")
+ec_pred6  = readdlm("../poets/results_poets/cross_validation/EC6_jl_array.dat")
+ec_pred7  = readdlm("../poets/results_poets/cross_validation/EC7_jl_array.dat")
+ec_pred8  = readdlm("../poets/results_poets/cross_validation/EC8_jl_array.dat")
+ec_pred9  = readdlm("../poets/results_poets/cross_validation/EC9_jl_array.dat")
+ec_pred10 = readdlm("../poets/results_poets/cross_validation/EC10_jl_array.dat")
+ec_pred11 = readdlm("../poets/results_poets/cross_validation/EC11_jl_array.dat")
 
 # using Debug
 # @debug function stop()
@@ -37,7 +37,9 @@ push!(dat1 ,ec_random[1,:])
 # stop()
 row1 = [mean(dat1[1]),mean(dat1[2]),std(dat1[2]),
 mean(dat1[3]),std(dat1[3]),mean(dat1[4]),std(dat1[4])]
-
+#using HypothesisTests
+#@show dat1[2],dat1[4]
+#@show pvalue(TwoSampleTTest(Array{Float32}(dat1[2]),Array{Float32}(dat1[4])))
 
 # 2
 dat2 = []
@@ -154,7 +156,7 @@ push!(rows,row10)
 push!(rows,row11)
 
 
-dir_out= "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets"
+dir_out= "../poets/results_poets"
 
 writedlm("$dir_out/fig_error_table.csv",rows,",")
 

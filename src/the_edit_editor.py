@@ -1,4 +1,6 @@
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+# update edit_file_global with new indices from a new model buil
+# be careful, if entries are missing or mislabeled, all indexing will be thrown off, so spot check the new edit file
+execfile('../pyprgs/in_out_line.py')
 
 read = lin.reader('edit_file_global.jl')
 old = lin.writer('old_edit_file_global.jl_old',read)

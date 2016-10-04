@@ -27,7 +27,7 @@ end
 
 forward_master = 0.5 #0.5
 
-tgfb_add_forward_rate = 4#forward_master #4.0
+tgfb_add_forward_rate = forward_master #4.0
 vegf_add_forward_rate = forward_master*10
 vivit_add_forward_rate = forward_master*10
 
@@ -71,6 +71,10 @@ tcf4_trans_rate = 1.0 # 0.5
 snail_slug_trans_rate = 1.0 # increases lef1 mrna too much
 
 yreg_deg_rate = 1.5 # 1.5
+# for ox/ko
+yreg_ox_deg_rate = 0.15
+yreg_ko_deg_rate_protein = 15
+
 yreg_translation_rate = 1
 
 ### SELECTED DATA FILE INDEXES
@@ -83,7 +87,7 @@ R_initial_cond_index = 87
 vegf_initial_cond_index = 93 # VEGF
 
 yreg_translation_rate_index = 152 # translation_mRNA_YREG1: mRNA_YREG1 = YREG1
-
+yreg_protein_deg_rate_index = 48 # YREG1_degradation: YREG1 =([])=> []
 # TGFB signaling
 tgfb3_binding_rate_index = 3 # TGFB3_binding: TGFB3+R =([])=> TGFB3_R
 R_deg_rate_index = 57 # degradation_R: R =([])=> []

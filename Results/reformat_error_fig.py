@@ -1,5 +1,5 @@
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+execfile('../pyprgs/in_out_line.py')
+execfile('../pyprgs/in_out_csv.py')
 
 dat = csv.In("../poets/results_poets/fig_error_table.csv")
 
@@ -83,7 +83,7 @@ for i in range(len(head)):
 
 #plt.subplots_adjust(left=0.2, top=0.8)
 
-dir_out = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+dir_out = '../poets/results_poets/'
 label = 'error_ytable'
 fname = dir_out+'%s.png'%(label)
 plt.savefig(fname,bbox_inches='tight',dpi=300) # dpi=100

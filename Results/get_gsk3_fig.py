@@ -12,8 +12,8 @@ except:
     inpath = 'no input'
     label = 'no_label'
 # File handling 
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+execfile('../pyprgs/in_out_line.py')
+execfile('../pyprgs/in_out_csv.py')
 
 # subsets data based on list of species 
 def subset(data,labels,kwd_list):
@@ -31,11 +31,11 @@ def subset(data,labels,kwd_list):
 
     return  SubDat,SubLab    
 
-execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/ez_sorter.py')
+execfile('../Results/ez_sorter.py')
 
-dirp = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+dirp = '../poets/results_poets/'
 dirp1 = dirp 
-dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+dir_out= '../poets/results_poets/'
 # Read means and standard deviations for figure 2 training bars
 
 #F2A = csv.listToFlt(lin.reader(dirp+"F2A.dat"))
@@ -92,7 +92,7 @@ y_pos = np.arange(len(objects))
 
 # A 
 title = 'GSK3-P'
-blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/Fig3B.png'
+blotpic = '../Results/figblotimages/Fig3B.png'
 blotposx,blotposy=10,10
 figlab_x, figlab_y, figlab = refxf, refyf, "B"
 
@@ -104,7 +104,7 @@ sds2       = [ F3B_cv[3], F3B_cv[4], F3B_cv[5] ]
 
 plt.subplot(431)
 ylab_opt = True
-execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+execfile('../Results/barplot_sd_two_bars.py')
 ylab_opt = False
     
 # # # 

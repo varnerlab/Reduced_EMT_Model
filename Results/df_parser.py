@@ -1,7 +1,7 @@
 # requires execfile("in_out_line.py")
 
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py') #
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py') #
+execfile('../pyprgs/in_out_line.py') #
+execfile('../pyprgs/in_out_csv.py') #
 
 def parse_DataFile(linlist):
     species = []
@@ -21,10 +21,10 @@ def parse_XSS(linlist):
     return outlines
 
 
-datfile_path = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/DataFile.jl'
+datfile_path = '../src/DataFile.jl'
 #datfile_path = '/Users/dbassen/work/KwateeServer-v1.0/src/DataFile.jl'
 #print('WARNING CHANGE DATAFILE PATH TO GEN SPECIES NAMES')
-print('-- using server_swap_space/gen_2_model/src/DataFile.jl')
+print('-- using gen_2_model/src/DataFile.jl')
 #datfile_path = '/Users/dbassen/Dropbox/server_swap_space/gen_1_model/src/DataFile.jl'
 DataFile = lin.reader(datfile_path)
 

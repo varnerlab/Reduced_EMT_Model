@@ -1,0 +1,126 @@
+CURRENT LOCATION:
+/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results
+MAIN REFERENCE: gen_2_model
+PATH TO MAIN: ../
+REPLACE /home/dbassen/Dropbox/server_swap_space/gen_2_model/ WITH ../
+
+collect_EC_values.jl:ec_training = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/EC.dat")
+collect_EC_values.jl:ec_nominal = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/EC_training.dat")
+collect_EC_values.jl:#ec_random = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/random_set/EC.dat")
+collect_EC_values.jl:ec_random = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/random_set/EC_full_jl_array.dat")
+collect_EC_values.jl:ec_pred1  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC1_jl_array.dat")
+collect_EC_values.jl:ec_pred2  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC2_jl_array.dat")
+collect_EC_values.jl:ec_pred3  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC3_jl_array.dat")
+collect_EC_values.jl:ec_pred4  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC4_jl_array.dat")
+collect_EC_values.jl:ec_pred5  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC5_jl_array.dat")
+collect_EC_values.jl:ec_pred6  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC6_jl_array.dat")
+collect_EC_values.jl:ec_pred7  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC7_jl_array.dat")
+collect_EC_values.jl:ec_pred8  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC8_jl_array.dat")
+collect_EC_values.jl:ec_pred9  = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC9_jl_array.dat")
+collect_EC_values.jl:ec_pred10 = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC10_jl_array.dat")
+collect_EC_values.jl:ec_pred11 = readdlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/cross_validation/EC11_jl_array.dat")
+collect_EC_values.jl:dir_out= "/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets"
+
+anfat_spp_phenotype_abundance_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+anfat_spp_phenotype_abundance_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+anfat_spp_phenotype_abundance_plot.py:dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+
+barplot_sd_two_bars.py:    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/'
+
+df_parser.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py') #
+df_parser.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py') #
+df_parser.py:datfile_path = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/DataFile.jl'
+
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/ez_sorter.py')
+get_FINAL_POETS_multi_make_fig2.py:dirp = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+get_FINAL_POETS_multi_make_fig2.py:dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigA.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigB.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigC_2.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigD_2.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigE_2.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigF_2.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigG.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigH.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/FigI.png'
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+get_FINAL_POETS_multi_make_fig2.py:    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/' 
+get_FINAL_POETS_multi_make_fig2.py:    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/' 
+get_FINAL_POETS_multi_make_fig2.py:    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/' 
+
+get_gsk3_fig.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+get_gsk3_fig.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+get_gsk3_fig.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/ez_sorter.py')
+get_gsk3_fig.py:dirp = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+get_gsk3_fig.py:dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+get_gsk3_fig.py:blotpic = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/Fig3B.png'
+get_gsk3_fig.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd_two_bars.py')
+
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/df_parser.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/ez_sorter.py')
+get_multi_make_fig2.py:dirp = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/Fig2Simulations/' # used to be TGFb simulation dir
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot.py')
+get_multi_make_fig2.py:fname = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/fig2_hand_fit%s.png'%(label)
+
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/ez_sorter.py')
+get_POETS_multi_make_fig2.py:dirp = '/home/dbassen/work/varner_gould_emt_model/emt_grn_bassen_model/Results/results_poets/' # storage for data and plots
+get_POETS_multi_make_fig2.py:dirp = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+get_POETS_multi_make_fig2.py:execfile('/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/barplot_sd.py')
+
+phenotype_abundance_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+phenotype_abundance_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+phenotype_abundance_plot.py:dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+
+reformat_error_fig.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+reformat_error_fig.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+reformat_error_fig.py:dir_out = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+
+reformat_prediction_patch.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+reformat_prediction_patch.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+
+robustness_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+robustness_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+robustness_plot.py:dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+
+yreg_henotype_abundance_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+yreg_henotype_abundance_plot.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+yreg_henotype_abundance_plot.py:dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'

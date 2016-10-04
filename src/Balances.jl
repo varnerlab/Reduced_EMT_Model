@@ -1,5 +1,5 @@
-include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/Kinetics.jl");
-include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/Control.jl");
+include("../src/Kinetics.jl");
+include("../src/Control.jl");
 
 # ----------------------------------------------------------------------------------- #
 # Copyright (c) 2016 Varnerlab

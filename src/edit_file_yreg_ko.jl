@@ -14,6 +14,7 @@ control_parameter_update_array = [];
 # rates
 # TGFB dosing
 push!(rate_constant_update_array,[yreg_translation_rate_index,0.00]) # addition_TGFb12: [] =([])=> TGFB12
+push!(rate_constant_update_array,[yreg_protein_deg_rate_index,yreg_ko_deg_rate_protein]) # addition_TGFb12: [] =([])=> TGFB12
 
 # Run snail slug instead
 #push!(rate_constant_update_array,[152,10.0]) # induction_gene_SNAIL_SLUG: gene_SNAIL_SLUG = mRNA_SNAIL_SLUG

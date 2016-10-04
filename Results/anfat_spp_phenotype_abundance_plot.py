@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+execfile('../pyprgs/in_out_line.py')
+execfile('../pyprgs/in_out_csv.py')
 dat = lin.reader("../poets/results_poets/active_nfat_ap_sp1_p_training_set.dat")
 population = csv.nestedToFlt([( string.replace('Any[' ,'').replace(']','')).split(',') for string in dat]) # python
 
-dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+dir_out= '../poets/results_poets/'
 
 # robustness  indices
 # 1 edit_file_tgfb.jl (0,1)

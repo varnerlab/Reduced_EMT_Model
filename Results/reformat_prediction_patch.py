@@ -1,7 +1,7 @@
 # take linear julia list of lists and convert to julia array format
 
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+execfile('../pyprgs/in_out_line.py')
+execfile('../pyprgs/in_out_csv.py')
 
 dat1 = lin.reader("../poets/results_poets/cross_validation/EC1.dat")
 dat2 = lin.reader("../poets/results_poets/cross_validation/EC2.dat")

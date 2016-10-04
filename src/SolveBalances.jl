@@ -1,4 +1,4 @@
-include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/Balances.jl");
+include("../src/Balances.jl");
 using Sundials;
 
 # ----------------------------------------------------------------------------------- #

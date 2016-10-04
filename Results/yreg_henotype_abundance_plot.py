@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
-execfile('/home/dbassen/Dropbox/pyprgs/in_out_csv.py')
+execfile('../pyprgs/in_out_line.py')
+execfile('../pyprgs/in_out_csv.py')
 dat = lin.reader("../poets/results_poets/yreg_ox_ko_training_set.dat")
 population = csv.nestedToFlt([( string.replace('Any[' ,'').replace(']','')).split(',') for string in dat]) # python
 
-dir_out= '/home/dbassen/Dropbox/server_swap_space/gen_2_model/poets/results_poets/'
+dir_out= '../poets/results_poets/'
 
 # robustness  indices
 # 1 edit_file_tgfb.jl (0,1)
@@ -61,7 +61,7 @@ execfile("scatter_abundance_2.py")
 
 # 3 tgfb vegf plot
 plt.subplot(325)
-title = ''# u'+ TGF${\\beta}$12\n+ VEGFA'
+title = u'YREG1 KO\n+TGF${\\beta}$1/2'# u'+ TGF${\\beta}$12\n+ VEGFA'
 ecad_index = 4
 vim_index = 5
 OAfiglab_x, figlab_y, figlab = refx, refy, "C"
@@ -87,7 +87,7 @@ execfile("scatter_abundance_2.py")
 
 # 6 tgfb+vegf+vi plot
 plt.subplot(326)
-title = u'+ TGF${\\beta}$12\n+ VEGFA\n+ VIVIT'
+title = u'YREG1 OX\n+TGF${\\beta}$1/2'
 ecad_index = 6
 vim_index = 7
 figlab_x, figlab_y, figlab = refx, refy, "F"

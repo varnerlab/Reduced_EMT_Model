@@ -1,5 +1,5 @@
-include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/DataFile.jl")
-include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/SolveBalances.jl")
+include("../src/DataFile.jl")
+include("../src/SolveBalances.jl")
 using Debug
 
 # =============================================================================== #
@@ -41,7 +41,7 @@ tscript_mult = 0.2 # 0.033
 
   #test = data_dictionary["INITIAL_CONDITION_ARRAY"]
   #println(data_dictionary)
-  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+  include("../src/edit_file_global.jl")
   UpdateArray(current_data_dictionary,"INITIAL_CONDITION_ARRAY",initial_cond_update_array)
   UpdateArray(current_data_dictionary,"RATE_CONSTANT_ARRAY",rate_constant_update_array)
 
@@ -113,7 +113,7 @@ tscript_mult = 0.2 # 0.033
 
     if (DIFF<EPSILON)
       did_reach_steady_state = true;
-      # savepath = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/all_XSS.dat"
+      # savepath = "../output/all_XSS.dat"
       # println("Save",size(X_all))
       # writedlm(savepath,X_all)# save
       return (X2[end,:]);
@@ -139,7 +139,7 @@ end
 
 @debug function SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim_RCA)
 
-  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+  include("../src/edit_file_global.jl")
   UpdateArray(data_dictionary_active,"INITIAL_CONDITION_ARRAY",initial_cond_update_array)
 
   ### THIS WAS MISSING BECAUSE IT WAS REPLACED BY SIM_RCA... BUT NEEDS TO COME BEFORE IT
@@ -232,7 +232,7 @@ function SolveModelAddTGFB(TSTART,TSTOP,Ts,data_dictionary)
 
   # Setup simulation time -
   # TSIM = collect(TSTART:Ts:TSTOP); # redundant
-  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+  include("../src/edit_file_global.jl")
 
   UpdateArray(data_dictionary,"INITIAL_CONDITION_ARRAY",initial_cond_update_array)
   UpdateArray(data_dictionary,"RATE_CONSTANT_ARRAY",rate_constant_update_array)
@@ -313,7 +313,7 @@ function SolveModelGeneric(TSTART,TSTOP,Ts,data_dictionary_active,simulation)
   # Setup simulation time -
   # TSIM = collect(TSTART:Ts:TSTOP); # redundant
 
-  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+  include("../src/edit_file_global.jl")
   UpdateArray(data_dictionary_active,"INITIAL_CONDITION_ARRAY",initial_cond_update_array)
   #UpdateArray(data_dictionary,"RATE_CONSTANT_ARRAY",rate_constant_update_array)
   #UpdateArray(data_dictionary,"CONTROL_PARAMETER_ARRAY",control_parameter_update_array)

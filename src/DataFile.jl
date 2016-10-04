@@ -40,7 +40,7 @@ function DataFile(TSTART,TSTOP,Ts)
 # ----------------------------------------------------------------------------------- #
 
 # Load the stoichiometric matrix -
-S = float(open(readdlm,"/home/dbassen/Dropbox/server_swap_space/gen_2_model/Network.dat"));
+S = float(open(readdlm,"../Network.dat"));
 (NSPECIES,NREACTIONS) = size(S);
 
 # How many genes do we have in the model? -

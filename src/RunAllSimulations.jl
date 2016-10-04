@@ -1,6 +1,6 @@
 # RunAllSimulations
 println("Spinning up model code ... ")
-include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/new_SimulationFunctions.jl")
+include("../src/new_SimulationFunctions.jl")
 
 # Establish simulation parameters
 TSTART = 0.0;
@@ -91,7 +91,7 @@ initial_condition_array = vec(XSS);
 #println(initial_condition_array) ###
 #@show data_dictionary["RATE_CONSTANT_ARRAY"][141]
 
-writedlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/xss.dat", XSS)
+writedlm("../output/xss.dat", XSS)
 
 data_dictionary["INITIAL_CONDITION_ARRAY"] = initial_condition_array;
 xss_data_dict = deepcopy(data_dictionary)
@@ -122,7 +122,7 @@ xss_data_dict = deepcopy(data_dictionary)
 #@show xss_data_dict["RATE_CONSTANT_ARRAY"][141]
 
 #simulations_name = ["edit_file_none.jl","edit_file_tgfb.jl","edit_file_mapkin.jl","edit_file_ss.jl","edit_file_ssecad.jl","edit_file_ss_tgfb3ab.jl","edit_file_ss_dnlef1.jl","edit_file_tgfb3.jl","edit_file_dnsmad.jl","edit_file_tgfb3_dnlef1.jl","edit_file_tgfb_tgfb3ab.jl"]
-simulations_name = ["edit_file_tgfb.jl","edit_file_vegf.jl","edit_file_vegf_vi.jl","edit_file_tgfb_vi.jl","edit_file_tgfb_vegf.jl","edit_file_vegf_vi.jl","edit_file_tgfb_vegf_vi.jl","edit_file_yreg_ox.jl","edit_file_yreg_ko.jl"] # Robustness sims
+simulations_name = ["edit_file_tgfb.jl","edit_file_vegf.jl","edit_file_vegf_vi.jl","edit_file_tgfb_vi.jl","edit_file_tgfb_vegf.jl","edit_file_vegf_vi.jl","edit_file_tgfb_vegf_vi.jl","edit_file_yreg_ox.jl","edit_file_yreg_ko.jl","edit_file_yreg_ox_tgfb.jl","edit_file_yreg_ko_tgfb.jl"] # Robustness sims
 #include("spin_up_edits.jl")
 include("robustness_spin_up_edits.jl")
 sim_data = [] # Keep data in RAM
@@ -134,7 +134,7 @@ for sim in simulations
   data_dictionary_active = deepcopy(xss_data_dict)
   (TSIM,X) = SolveModelGeneric_ram(TSTART,TSTOP,Ts,data_dictionary_active,sim)
 
-  outdir="/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/Fig2Simulations/"
+  outdir="../output/Fig2Simulations/"
   tpath= string(outdir,"TSIM",name[10:end-3],".dat")
   xpath= string(outdir,"X",name[10:end-3],".dat")
   push!(sim_data,X)

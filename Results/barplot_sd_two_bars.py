@@ -59,7 +59,7 @@ if blotpic != '':
     im = Image.open(blotpic)
     width = im.size[0]
     height = im.size[1]
-    rootdir = '/home/dbassen/Dropbox/server_swap_space/gen_2_model/Results/figblotimages/'
+    rootdir = '../Results/figblotimages/'
     if blotpic==rootdir+'FigC_2.png' or blotpic ==rootdir+'FigD_2.png' or blotpic ==rootdir+'FigE_2.png' or blotpic ==rootdir+'FigF_2.png':
         scalex,scaley = 0.45,0.3    
     else:

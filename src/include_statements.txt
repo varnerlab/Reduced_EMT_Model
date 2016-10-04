@@ -1,0 +1,30 @@
+CURRENT LOCATION:
+/home/dbassen/Dropbox/server_swap_space/gen_2_model/src
+MAIN REFERENCE: gen_2_model
+PATH TO MAIN: ../
+REPLACE /home/dbassen/Dropbox/server_swap_space/gen_2_model/ WITH ../
+
+Balances.jl:include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/Kinetics.jl");
+Balances.jl:include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/Control.jl");
+
+DataFile.jl:S = float(open(readdlm,"/home/dbassen/Dropbox/server_swap_space/gen_2_model/Network.dat"));
+
+new_SimulationFunctions.jl:include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/DataFile.jl")
+new_SimulationFunctions.jl:include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/SolveBalances.jl")
+new_SimulationFunctions.jl:  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+new_SimulationFunctions.jl:      # savepath = "/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/all_XSS.dat"
+new_SimulationFunctions.jl:  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+new_SimulationFunctions.jl:  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+new_SimulationFunctions.jl:  include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/edit_file_global.jl")
+
+RunAllSimulations.jl:include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/new_SimulationFunctions.jl")
+RunAllSimulations.jl:writedlm("/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/xss.dat", XSS)
+RunAllSimulations.jl:  outdir="/home/dbassen/Dropbox/server_swap_space/gen_2_model/output/Fig2Simulations/"
+
+SolveBalances.jl:include("/home/dbassen/Dropbox/server_swap_space/gen_2_model/src/Balances.jl");
+
+# move pyprgs to gen_2_model/pyprgs
+df_parser.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+the_edit_editor.py:execfile('/home/dbassen/Dropbox/pyprgs/in_out_line.py')
+
+# 10/03/16
