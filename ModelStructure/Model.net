@@ -195,7 +195,7 @@ GSK3_P_inhibition_Binding_APC_AXIN_forw,GSK3_P,Binding_APC_AXIN_forw,inhibition;
 // Record:
 // name (unique),gene_symbol,mRNA_symbol,polymerase_symbol;
 // ============================================================ //
-// if not control term, then expressed constitutively  k*gene_Smad(0or1)*RNAP
+// if no control term, then expressed constitutively  k*gene_Smad(0or1)*RNAP
 // no hogging RNAP, just one pool
 induction_gene_Smad,gene_Smad,mRNA_Smad,RNAP;
 induction_gene_Ecadherin,gene_Ecadherin,mRNA_Ecadherin,RNAP;
@@ -262,8 +262,6 @@ translation_mRNA_tubulin,mRNA_tubulin,tubulin,RIBOSOME;
 translation_mRNA_APC_AXIN,mRNA_APC_AXIN,APC_AXIN,RIBOSOME;
 translation_mRNA_GSK3,mRNA_GSK3,GSK3,RIBOSOME;
 translation_mRNA_PI3K,mRNA_PI3K,PI3K,RIBOSOME;
-
-// can hack by just making protein
 
 // ============================================================ //
 // Control terms gene expression -
