@@ -1,4 +1,4 @@
-// ============================================================ //
+Führer// ============================================================ //
 // EMT model file for the Kwatee GRN plugin
 // Author: J. Varner
 // Version: 1.0
@@ -145,14 +145,6 @@ generation_RNAP,[],RNAP,[],-inf,inf;
 generation_RIBOSOME,[],RIBOSOME,[],-inf,inf;
 generation_PPase,[],PPase,[],-inf,inf;
 
-
-
-// MEK inhibitor (can vary the dose profile dynamics) // already included below
-addition_U0126,[],U0126,[],-inf,inf;
-
-// Vivit (NFAT inhibitor)
-addition_vivit,[],vivit,[],-inf,inf;
-
 // all mrna and protein should have a degradation term (reasonable to start mRNAs at same deg rate initially)
 addition_TGFB3_Ab,[],TGFB3_Ab,[],-inf,inf;
 
@@ -169,6 +161,14 @@ addition_TGFb12,[],[],TGFB12,-inf,inf;
 addition_VEGF,[],[],VEGF,-inf,inf;
 addition_TGFB3,[],[],TGFB3,-inf,inf;
 
+
+// MEK inhibitor (can vary the dose profile dynamics) // already included below
+addition_U0126,[],U0126,[],-inf,inf;
+
+// Vivit (NFAT inhibitor)
+addition_vivit,[],vivit,[],-inf,inf;
+
+
 // ============================================================ //
 // Control terms signal transduction -
 #pragma handler_class = VLCGSignalTransductionControlParserDelegate
@@ -179,6 +179,7 @@ addition_TGFB3,[],[],TGFB3,-inf,inf;
 // how does inhibitor influence MAPK 'actor--what is doing the inhibiting or activating, control like a hill function
 // kinetic rate * control term(usually 1, unless inhibitor/activator is present)
 // see model filed
+
 MAPK_inhibition,U0126,RAF_P_phosphorylation,inhibition;
 TGFB3_inhibition,TGFB3_Ab,TGFB3_binding,inhibition;
 NFATc_inhibition,vivit,Calcineurin_activation_NFATc,inhibition;
