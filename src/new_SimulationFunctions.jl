@@ -161,6 +161,7 @@ end
 # factor of 10 just corrects for a 0.1 "gamma/delta" value in the data file
   rate_constant_array[mdeg_start:mdeg_end]=10*rate_constant_array[mdeg_start:mdeg_end]*degradation_constant_mRNA
   rate_constant_array[pdeg_start:pdeg_end]=10*rate_constant_array[pdeg_start:pdeg_end]*degradation_constant_protein
+  #@show rate_constant_array # inspect scaled array
   data_dictionary_active["RATE_CONSTANT_ARRAY"] = rate_constant_array
 
 # 137 - 139
